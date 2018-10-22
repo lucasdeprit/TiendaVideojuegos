@@ -15,7 +15,7 @@ public class GestionTienda {
 	
 		System.out.println(v1.toString()+"\n"+v2.toString()+"\n"+v3.toString());
 		System.out.println(c1.toString()+"\n"+c2.toString()+"\n"+c3.toString());
-		System.out.println("cambio");
+		
 		
 		
 	}
