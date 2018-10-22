@@ -1,6 +1,6 @@
 package logica;
 
-public class Viideojuego {
+public class Viideojuego{
 
 	private int  ID;
 	private String nombre;
@@ -86,6 +86,9 @@ public class Viideojuego {
 		return "Viideojuego [ID=" + ID + ", nombre=" + nombre + ", edad=" + edad + ", genero=" + genero + ", Marca="
 				+ Marca + ", plataforma=" + plataforma + ", descripcion=" + descripcion + "]";
 	}
+
+
+	
 	
 	
 	
