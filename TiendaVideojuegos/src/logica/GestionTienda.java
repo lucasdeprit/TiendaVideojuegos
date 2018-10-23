@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.HashMap;
+
 public class GestionTienda {
 
 	public static void main(String[] args) {
