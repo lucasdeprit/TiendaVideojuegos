@@ -31,7 +31,7 @@ public class GestionTienda {
 		
 		System.out.println(g1.sePuedeComprar(c1,v1));
 		
-		
+		System.out.println("CAMBIO DE PRUEBA");
 		
 	}
 
