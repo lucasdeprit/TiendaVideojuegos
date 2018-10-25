@@ -2,5 +2,5 @@ package Gui;
 
 public class Prueba {
 String s;
-String p;
+String p1;
 }
