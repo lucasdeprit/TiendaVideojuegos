@@ -64,8 +64,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	
 	JLabel mostrar_imagen = new JLabel("");
 	mostrar_imagen.setHorizontalAlignment(SwingConstants.CENTER);
-	mostrar_imagen.setIcon(new ImageIcon("/Gui/Gui_imagenes/HC_videojuegos-050917-1.jpg"));
+	mostrar_imagen.setIcon(new ImageIcon("C:\\Users\\Aitor Morais\\git\\TiendaVideojuegos\\TiendaVideojuegos\\src\\Gui\\Gui_imagenes\\HC_videojuegos-050917-1.jpg"));
 	mostrar_imagen.setBounds(0, 0, 494, 471);
+	//mostrar_imagen.setVisible(true);
+	//mostrar_imagen.setHorizontalAlignment(SwingConstants.CENTER);
 	panelimagen.add(mostrar_imagen);
 	
 	}
