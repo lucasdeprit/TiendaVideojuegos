@@ -26,11 +26,18 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	
 	private void inicializarComponentes() {
 	boton = new JButton();
+	boton.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent click) {
+			Ventana inicio= new Ventana();
+			inicio.setResizable(false);
+			inicio.setVisible(true);
+		}
+	});
 	boton.setBounds(39, 406, 200, 30);
 	boton2 = new JButton();
 	boton2.setBounds(260, 406, 200, 30);
 	boton.setText("Iniciar Sesion");
-	boton.addActionListener(this);
 	boton2.setText("Registrarse");
 	boton2.addActionListener(this);
 	getContentPane().setLayout(null);
@@ -76,6 +83,5 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		VentanaPrincipal V = new VentanaPrincipal(); // creamos la ventana	
 		V.setVisible(true);							 // hacemos la ventana visible
-
 	}
 }
