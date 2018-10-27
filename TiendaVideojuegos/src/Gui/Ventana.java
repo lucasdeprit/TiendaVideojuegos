@@ -15,30 +15,18 @@ import javax.swing.Action;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
 
 public class Ventana extends JFrame {
-	
-	private JTextField Usuariotxt,Passtxt;
 	private JButton aceptar,boton2;
 	private JPanel fondo;
 	private JPasswordField pass;
 	JTextArea nombreUsuario ;
 	
-	public JTextField getUsuariotxt() {
-		return Usuariotxt;
-	}
 
-	public void setUsuariotxt(JTextField usuariotxt) {
-		Usuariotxt = usuariotxt;
-	}
 
-	public JTextField getPasstxt() {
-		return Passtxt;
-	}
 
-	public void setPasstxt(JTextField passtxt) {
-		Passtxt = passtxt;
-	}
+	
 
 	public JButton getAceptar() {
 		return aceptar;
@@ -78,21 +66,10 @@ public class Ventana extends JFrame {
 		setBounds(50, 20, 293, 196);
 		//setSize(287, 219);
 		fondo=new JPanel();
-		fondo.setBackground(SystemColor.desktop);
+		fondo.setBackground(Color.LIGHT_GRAY);
 		setContentPane(fondo);
 		getContentPane().setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);//Pendiente hilo aqui.
-		Usuariotxt= new JTextField();
-		Usuariotxt.setEditable(false);
-		Usuariotxt.setLocation(50, 10);
-		Usuariotxt.setSize(new Dimension(79, 25));
-		Usuariotxt.setText("Usuario:");
-		fondo.add(Usuariotxt);
-		Passtxt= new JTextField();
-		Passtxt.setEditable(false);
-		Passtxt.setBounds(50, 40, 79, 25);
-		Passtxt.setText("Contrase\u00F1a:");
-		fondo.add(Passtxt);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		aceptar = new JButton("Aceptar");
 		aceptar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -122,6 +99,14 @@ public class Ventana extends JFrame {
 		nombreUsuario=new JTextArea();
 		nombreUsuario.setBounds(164, 11, 91, 25);
 		fondo.add(nombreUsuario);
+		
+		JLabel Usuariolbl = new JLabel("Usuario:");
+		Usuariolbl.setBounds(50, 11, 79, 25);
+		fondo.add(Usuariolbl);
+		
+		JLabel passlbl = new JLabel("Contrase\u00F1a");
+		passlbl.setBounds(50, 49, 72, 25);
+		fondo.add(passlbl);
 		
 		
 	}
