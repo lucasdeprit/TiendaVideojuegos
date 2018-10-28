@@ -1,6 +1,16 @@
 package Gui;
 
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Font;
 import java.awt.Color;
@@ -10,7 +20,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	private JLabel texto;
 	private JButton boton, boton2;
 	
-	public VentanaPrincipal() {
+	public VentanaPrincipal() throws IOException {
 		super();
 		configurarVentana();
 		inicializarComponentes();
@@ -24,7 +34,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	private void inicializarComponentes() {
+	private void inicializarComponentes() throws IOException {
 	boton = new JButton();
 	boton.addMouseListener(new MouseAdapter() {
 		@Override
@@ -51,7 +61,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	// crear los componentes
 	
 	texto = new JLabel();
-	texto.setBounds(190, 175, 100, 25);
+	texto.setBounds(216, 56, 100, 25);
 	panelimagen.add(texto);
 	texto.setBackground(Color.WHITE);
 	texto.setForeground(Color.WHITE);
@@ -61,18 +71,18 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	// configuramos los componentes
 	
 	texto.setText("INICIO");
-	
+	String path = "http://sae7berita-info.com/wp-content/uploads/2018/06/Asus-ROG-republic-of-gamers-logo-1068x668.jpg";
+	URL url = new URL(path);
+	BufferedImage image = ImageIO.read(url);
 	JLabel mostrar_imagen = new JLabel("");
 	mostrar_imagen.setHorizontalAlignment(SwingConstants.CENTER);
-	mostrar_imagen.setIcon(new ImageIcon("C:\\Users\\Aitor Morais\\git\\TiendaVideojuegos\\TiendaVideojuegos\\src\\Gui\\Gui_imagenes\\HC_videojuegos-050917-1.jpg"));
+	mostrar_imagen.setIcon(new ImageIcon(image));
 	mostrar_imagen.setBounds(0, 0, 494, 471);
 	//mostrar_imagen.setVisible(true);
 	//mostrar_imagen.setHorizontalAlignment(SwingConstants.CENTER);
 	panelimagen.add(mostrar_imagen);
 	
 	}
-	
-	
 	
 	
 	@Override
@@ -82,8 +92,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	}
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		VentanaPrincipal V = new VentanaPrincipal(); // creamos la ventana	
 		V.setVisible(true);							 // hacemos la ventana visible
 	}
 }
+
