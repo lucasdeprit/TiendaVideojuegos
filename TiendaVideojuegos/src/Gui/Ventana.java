@@ -73,6 +73,7 @@ public class Ventana extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		aceptar = new JButton("Aceptar");
 		aceptar.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent click) {
 				String nombre;

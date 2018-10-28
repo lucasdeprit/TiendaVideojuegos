@@ -2,19 +2,11 @@ package Gui;
 
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.SystemColor;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
 	private JButton boton, boton2;
