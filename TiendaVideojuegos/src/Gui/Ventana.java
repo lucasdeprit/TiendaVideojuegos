@@ -16,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Ventana extends JFrame {
 	private JButton aceptar,boton2;
@@ -79,8 +80,9 @@ public class Ventana extends JFrame {
 				nombre=nombreUsuario.getText();
 				contrasena=pass.getText();
 				if(nombre==""|| nombre == null||contrasena.length()<8||contrasena==null||contrasena=="") {
-					System.out.println("Nombre o contraseña incorrectos vuelva a introducirlos...");
-					
+					JOptionPane.showMessageDialog(null, "Nombre y/o contraseña incorrectos", "Error en el Loggin", JOptionPane.WARNING_MESSAGE);
+					setVisible(false);
+					dispose();
 				}
 				System.out.println(nombre+contrasena);
 				

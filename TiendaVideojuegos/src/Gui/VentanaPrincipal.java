@@ -17,7 +17,6 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class VentanaPrincipal extends JFrame implements ActionListener {
-	private JLabel texto;
 	private JButton boton, boton2;
 	
 	public VentanaPrincipal() throws IOException {
@@ -35,7 +34,20 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	}
 	
 	private void inicializarComponentes() throws IOException {
+	getContentPane().setLayout(null);
+	
+	JPanel panelimagen = new JPanel();
+	panelimagen.setBounds(0, 0, 494, 471);
+	getContentPane().add(panelimagen);
+	panelimagen.setLayout(null);
+	boton2 = new JButton();
+	boton2.setBounds(260, 430, 200, 30);
+	panelimagen.add(boton2);
+	boton2.setText("Registrarse");
+	boton2.addActionListener(this);
 	boton = new JButton();
+	boton.setBounds(35, 430, 200, 30);
+	panelimagen.add(boton);
 	boton.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent click) {
@@ -44,33 +56,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 			inicio.setVisible(true);
 		}
 	});
-	boton.setBounds(39, 406, 200, 30);
-	boton2 = new JButton();
-	boton2.setBounds(260, 406, 200, 30);
 	boton.setText("Iniciar Sesion");
-	boton2.setText("Registrarse");
-	boton2.addActionListener(this);
-	getContentPane().setLayout(null);
-	getContentPane().add(boton);
-	getContentPane().add(boton2);
-	
-	JPanel panelimagen = new JPanel();
-	panelimagen.setBounds(0, 0, 494, 471);
-	getContentPane().add(panelimagen);
-	panelimagen.setLayout(null);
-	// crear los componentes
-	
-	texto = new JLabel();
-	texto.setBounds(216, 56, 100, 25);
-	panelimagen.add(texto);
-	texto.setBackground(Color.WHITE);
-	texto.setForeground(Color.WHITE);
-	texto.setFont(new Font("Tahoma", Font.PLAIN, 24));
-	texto.setHorizontalAlignment(SwingConstants.CENTER);
-	
-	// configuramos los componentes
-	
-	texto.setText("INICIO");
 	String path = "http://sae7berita-info.com/wp-content/uploads/2018/06/Asus-ROG-republic-of-gamers-logo-1068x668.jpg";
 	URL url = new URL(path);
 	BufferedImage image = ImageIO.read(url);
@@ -90,8 +76,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(this, " Inicio de Sesion " +   ".");
 		
 	}
-
-	
 	public static void main(String[] args) throws IOException {
 		VentanaPrincipal V = new VentanaPrincipal(); // creamos la ventana	
 		V.setVisible(true);							 // hacemos la ventana visible
