@@ -39,13 +39,13 @@ public class Vregistrar extends JFrame{
 	      //en Windows terminaremos cada línea con "\r\n"
 	      fichero.write("Nombre:"+texto + "\r\n");
 	      texto=apellidostxt.getText();
-	      fichero.write("Apellidos: "+texto + "\r\n");
+	      fichero.write("Apellidos:"+texto + "\r\n");
 	      texto=correotxt.getText();
-	      fichero.write("Correo: "+texto + "\r\n");
+	      fichero.write("Correo:"+texto + "\r\n");
 	      texto=nicktxt.getText();
-	      fichero.write("Nick: "+texto + "\r\n");
+	      fichero.write("Nick:"+texto + "\r\n");
 	      texto=passwordField.getText();
-	      fichero.write("Pass: "+texto + "\r\n");
+	      fichero.write("Pass:"+texto + "\r\n");
 	    // edad= spinneredad.get;
 	      //cerramos el fichero
 	      fichero.close();
