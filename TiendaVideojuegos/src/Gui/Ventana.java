@@ -1,7 +1,6 @@
 package Gui;
 
 import java.awt.Color;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,7 +16,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 public class Ventana extends JFrame {
 	private JButton aceptar,boton2;
 	private JPanel fondo;

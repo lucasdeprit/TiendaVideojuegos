@@ -36,7 +36,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	boton2.setBounds(260, 430, 200, 30);
 	panelimagen.add(boton2);
 	boton2.setText("Registrarse");
-	boton2.addActionListener(this);
+	boton2.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent click) {
+			Vregistrar registro= new Vregistrar();
+			//registro.setResizable(false);
+			registro.setVisible(true);
+		}
+	});;
 	boton = new JButton();
 	boton.setBounds(35, 430, 200, 30);
 	panelimagen.add(boton);
