@@ -146,6 +146,32 @@ public class BD {
 				return false;
 			}
 		}
+	public static Object videojuegoSelect( Statement st, Viideojuego v, String genero_nombre , int id , String videojuego_nombre, String marca, String plataforma, String descripcion, int edad, double precio, String codigoSelect ) {
+	if (v==null || genero_nombre==null || genero_nombre.isEmpty()) return null;
+	String sentSQL = "";
+	try {
+		sentSQL = "select * from videojuego";
+		if (v!=null) {
+			String where = "genero_nombre='" + genero_nombre + "' AND videojuego_nombre='" + v.getNombre() + "'" 
+					+ "' AND marca='" + v.getMarca()  + "'" + "' AND plataforma='" + v.getPlataforma()  + "'" 
+					+ "' AND descripcion='" + v.getDescripcion()+ "'"
+					+ "' AND edad='" + v.getEdad()  + "'" + "' AND precio='" + v.getPrecio()  + "'";
+			if (codigoSelect!=null && !codigoSelect.equals(""))
+				sentSQL = sentSQL + " where " + where + " AND " + codigoSelect;
+			else
+				sentSQL = sentSQL + " where " + where;
+		}
+		if (codigoSelect!=null && !codigoSelect.equals(""))
+			sentSQL = sentSQL + " where " + codigoSelect;
+		ResultSet rs = st.executeQuery( sentSQL );
+		rs.close();
+		return rs;
+	} catch (SQLException e) {
+		lastError = e;
+		e.printStackTrace();
+		return null;
+	}
+}
 	
 	
 //  Metodos privados
