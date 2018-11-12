@@ -82,6 +82,9 @@ public class Ventana extends JFrame {
 					JOptionPane.showMessageDialog(null, "Nombre y/o contraseña incorrectos", "Error en el Loggin", JOptionPane.WARNING_MESSAGE);
 					setVisible(false);
 					dispose();
+					VentanaCategorias categorias= new VentanaCategorias();
+					categorias.setResizable(false);
+					categorias.setVisible(true);
 				}
 				System.out.println(nombre+contrasena);
 				
