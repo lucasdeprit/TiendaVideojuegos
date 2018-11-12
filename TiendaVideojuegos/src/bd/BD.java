@@ -2,9 +2,12 @@ package bd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
+import logica.Viideojuego;
 
 public class BD {
 	
@@ -44,7 +47,7 @@ public class BD {
 			} catch (SQLException e) {}
 			try {
 				statement.executeUpdate("create table videojuego " +
-					"(genero_nombre string, id int , videojuego_nombre string, marca string, plataforma string, descripcion string, edad int, precio double )");
+					"(genero_nombre string, id integer , videojuego_nombre string, marca string, plataforma string, descripcion string, edad integer, precio double )");
 			} catch (SQLException e) {
 				
 			}
@@ -80,6 +83,80 @@ public class BD {
 		}
 	}
 	
+	public static Exception getLastError() {	// último error producido por gestión de base de datos
+		return lastError;
+	}
+	
+	//	Operaciones GENERO
+	
+	public static boolean generoInsert( Statement st, Viideojuego v ) {
+		String sentSQL = "";
+		try {
+			sentSQL = "insert into genero values(" +
+					"'" + securizar(v.getNombre()) + "')";
+			int val = st.executeUpdate( sentSQL );
+			if (val!=1) { 
+				return false;  
+			}
+			return true;
+		} catch (SQLException e) {
+			lastError = e;
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static ArrayList<String> generoSelect( Statement st, String codigoSelect ) {
+		String sentSQL = "";
+		ArrayList<String> ret = new ArrayList<>();
+		try {
+			sentSQL = "select * from hotel";
+			if (codigoSelect!=null && !codigoSelect.equals(""))
+				sentSQL = sentSQL + " where " + codigoSelect;
+			ResultSet rs = st.executeQuery( sentSQL );
+			while (rs.next()) {
+				ret.add( rs.getString( "nombre" ) );
+			}
+			rs.close();
+			return ret;
+		} catch (SQLException e) {
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+//	Operaciones VIDEOJUEGO
+	
+	public static boolean videojuegoInsert( Statement st, Viideojuego v, String genero_nombre , int id , String videojuego_nombre, String marca, String plataforma, String descripcion, int edad, double precio ) {
+			String sentSQL = "";
+			try {
+				sentSQL = "insert into reserva values(" +
+						"'" + securizar(v.getNombre()) + "'," +
+						"'" + securizar(genero_nombre) + "'," +
+						id + ","+ securizar(videojuego_nombre) + "'," + securizar(marca) + "'," + securizar(plataforma) + "',"+ securizar(descripcion) + "',"+ edad + "',"+ precio + "'," ;
+				int val = st.executeUpdate( sentSQL );
+				if (val!=1) {  // Se tiene que añadir 1 - error si no
+					return false;  
+				}
+				return true;
+			} catch (SQLException e) {
+				lastError = e;
+				e.printStackTrace();
+				return false;
+			}
+		}
+	
+	
+//  Metodos privados
+	
+	private static String securizar( String string ) {  // comprobar que el string añadido tiene caracteres coherentes 
+		StringBuffer ret = new StringBuffer();
+		for (char c : string.toCharArray()) {
+			if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúüÁÉÍÓÚÚ.,:;-_(){}[]-+*=<>'\"¿?¡!&%$@#/\\0123456789".indexOf(c)>=0) ret.append(c);
+		}
+		return ret.toString();
+	}
 	
 	
 }
