@@ -7,9 +7,9 @@ public class GestionTienda {
 	public static void main(String[] args) {
 		//Main para ir probando las clases, metodos,...
 
-		Viideojuego v1 = new Viideojuego(3443,"uncharted 4",18,Genero.ACCIÓN ,"ubisoft","ps4","shooter");
-		Viideojuego v2 = new Viideojuego(3442,"uncharted 3",18,Genero.ACCIÓN,"ubisoft","ps4","shooter");
-		Viideojuego v3 = new Viideojuego(3441,"uncharted 2",18,Genero.ACCIÓN,"ubisoft","ps3","shooter");
+		Viideojuego v1 = new Viideojuego(3443,"uncharted 4",18,Genero.ACCIÓN ,"ubisoft","ps4","shooter",60);
+		Viideojuego v2 = new Viideojuego(3442,"uncharted 3",18,Genero.ACCIÓN,"ubisoft","ps4","shooter",25);
+		Viideojuego v3 = new Viideojuego(3441,"uncharted 2",18,Genero.ACCIÓN,"ubisoft","ps3","shooter",15);
 		HashMap<Viideojuego, Integer > stock_juegos = new HashMap <Viideojuego, Integer>();
 		
 		stock_juegos.put(v1,20);
