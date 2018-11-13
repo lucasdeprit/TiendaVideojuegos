@@ -1,7 +1,5 @@
-Nombre:aitor	
-
-
-Apellidos: morais
-Correo: a@a
-Nick: ai
-Pass: tor
+Nombre:kk
+Apellidos:k
+Correo:kkkkk
+Nick:fghjkl
+Pass:ljhgf
