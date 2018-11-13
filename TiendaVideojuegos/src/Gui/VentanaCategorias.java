@@ -17,7 +17,9 @@ import java.awt.event.ActionEvent;
 public class VentanaCategorias {
 
 	private JFrame frmCategorias;
-	private Viideojuego miVideojuego;
+	private ArrayList<Viideojuego> misVideojuegos;
+	private Connection connection;
+	private Statement statement;
 	
 	/**
 	 * Launch the application.
@@ -88,16 +90,20 @@ public class VentanaCategorias {
 		});
 		btnSalir.setBounds(164, 216, 113, 34);
 		frmCategorias.getContentPane().add(btnSalir);
+		connection = BD.initBD("BD");
+		statement = BD.CrearTablasBD(connection);
+		misVideojuegos = BD.videojuegoSelect(statement);
+		
 	}
 	
 	private void cargarDeBD() {
 		Connection con = BD.initBD( "genero.bd" );
 		Statement stat = BD.CrearTablasBD( con );
-		ArrayList<String> lH = BD.generoSelect( stat, "" );
-		if (lH==null || lH.isEmpty()) return;  // No hay datos en tablas
-		miVideojuego = new Viideojuego( 0, lH.get(0), 0, null, null, null, null, 0 );  // Crear videojuego con nombre de BD
-		ArrayList<String> lHabsEnBD = BD.generoSelect( stat, "" );
-		for (String genero : lHabsEnBD) {  // Crear habitaciones
+		ArrayList<String> lG = BD.generoSelect( stat, "" );
+		if (lG==null || lG.isEmpty()) return;  // No hay datos en tablas
+		miVideojuego = new Viideojuego( 0, lG.get(0), 0, null, null, null, null, 0 );  // Crear videojuego con nombre de BD
+		ArrayList<String> lGenEnBD = BD.generoSelect( stat, "" );
+		for (String genero : lGenEnBD) {  // Crear generos
 			miVideojuego.setGenero(genero);;
 		}
 	}
