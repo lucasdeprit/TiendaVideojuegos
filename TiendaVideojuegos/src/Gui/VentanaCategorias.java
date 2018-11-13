@@ -91,19 +91,14 @@ public class VentanaCategorias {
 	}
 	
 	private void cargarDeBD() {
-		// tarea 3
 		Connection con = BD.initBD( "genero.bd" );
 		Statement stat = BD.CrearTablasBD( con );
 		ArrayList<String> lH = BD.generoSelect( stat, "" );
 		if (lH==null || lH.isEmpty()) return;  // No hay datos en tablas
-		miVideojuego = new Viideojuego( lH.get(0) );  // Crear hotel con nombre de BD
-		ArrayList<String> lHabsEnBD = BD.habitacionSelect( stat, miHotel, "" );
-		for (String hab : lHabsEnBD) {  // Crear habitaciones
-			miVideojuego.addHabitacion( hab );
-			ArrayList<RangoFechas> lResEnBD = BD.reservaSelect( stat, miHotel, hab, "" );
-			for (RangoFechas rf : lResEnBD) {  // Crear reservas
-				miHotel.addReserva( hab, rf );
-			}
+		miVideojuego = new Viideojuego( 0, lH.get(0), 0, null, null, null, null, 0 );  // Crear videojuego con nombre de BD
+		ArrayList<String> lHabsEnBD = BD.generoSelect( stat, "" );
+		for (String genero : lHabsEnBD) {  // Crear habitaciones
+			miVideojuego.setGenero(genero);;
 		}
 	}
 }
