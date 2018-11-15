@@ -158,7 +158,7 @@ public class BD {
 			ResultSet rs = st.executeQuery(sentSQL);
 			rs.close();
 			while(rs.next()) {
-				videojuegos.add(new Viideojuego(rs.getInt("id"), ));
+				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre").rs.get)));
 			}
 			
 		} catch (SQLException e) {

@@ -27,8 +27,7 @@ public class Viideojuego{
 	}
 
 
-	public Viideojuego(int iD, String nombre, int edad, Genero genero, String marca, String plataforma,
-			String descripcion, double precio) {
+	public Viideojuego(int iD, String nombre, Genero genero,String descripcion, double precio) {
 		super();
 		ID = iD;
 		this.nombre = nombre;
@@ -68,7 +67,7 @@ public class Viideojuego{
 	public Genero getGenero() {
 		return genero;
 	}
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 	/*public String getMarca() {
@@ -92,8 +91,7 @@ public class Viideojuego{
 	
 	@Override
 	public String toString() {
-		return "Viideojuego [ID=" + ID + ", nombre=" + nombre + ", edad=" + edad + ", genero=" + genero + ", Marca="
-				+ Marca + ", plataforma=" + plataforma + ", descripcion=" + descripcion + " , precio=" + precio +"]";
+		return "Viideojuego [ID=" + ID + ", nombre=" + nombre + ", genero=" + genero + " , precio=" + precio +"]";
 	}
 
 
