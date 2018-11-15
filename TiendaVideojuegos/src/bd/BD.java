@@ -47,7 +47,7 @@ public class BD {
 			}
 			try {
 				statement.executeUpdate("create table videojuego "
-						+ "(id integer , nombre string,genero_nombre string, precio double )");
+						+ "(id integer, nombre string,genero_nombre string, precio double )");
 			} catch (SQLException e) {
 
 			}
@@ -91,10 +91,10 @@ public class BD {
 
 	// Operaciones GENERO
 
-	public static boolean generoInsert(Statement st, Viideojuego v) {
+	public static boolean generoInsert(Statement st, String genero) {
 		String sentSQL = "";
 		try {
-			sentSQL = "insert into genero values(" + "'" + securizar(v.getNombre()) + "')";
+			sentSQL = "insert into genero values(" + "'" + securizar(genero) + "')";
 			int val = st.executeUpdate(sentSQL);
 			if (val != 1) {
 				return false;
@@ -130,12 +130,12 @@ public class BD {
 //	Operaciones VIDEOJUEGO
 
 	public static boolean videojuegoInsert(Statement st, Viideojuego v, String genero_nombre, int id,
-			String nombre, String marca, String plataforma, String descripcion, int edad, double precio) {
+			String nombre,double precio) {
 		String sentSQL = "";
 		try {
 			sentSQL = "insert into reserva values(" + "'" + securizar(v.getNombre()) + "'," + "'"
 					+ securizar(genero_nombre) + "'," + id + "," + securizar(nombre) + "',"
-					+ "'," + edad+ "'," + precio + "',";
+					+ "',"+ precio + "',";
 			int val = st.executeUpdate(sentSQL);
 			if (val != 1) { // Se tiene que añadir 1 - error si no
 				return false;
@@ -155,11 +155,11 @@ public class BD {
 			sentSQL = "select * from videojuego";
 			
 			ResultSet rs = st.executeQuery(sentSQL);
-			rs.close();
+			
 			while(rs.next()) {
 				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre"),rs.getString("genero"),rs.getDouble("precio")));
 			}
-			
+			rs.close();
 		} catch (SQLException e) {
 			lastError = e;
 			e.printStackTrace();

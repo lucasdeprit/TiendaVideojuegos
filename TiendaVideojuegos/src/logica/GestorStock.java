@@ -46,7 +46,7 @@ public class GestorStock implements SePuedeComprar{
 	public boolean sePuedeComprar(Cliente c , Viideojuego v) {
 		// se comprueba que el cliente cumpla ciertos requisitos para comprar el juego
 		//tambien se comprueba si e juego se encuentra en stock
-		if(c.getAño_nac() <= 2000 && buscarJuegoEnStock(v)>= 1){
+		if(buscarJuegoEnStock(v)>= 1){
 			
 			return true;
 		}
@@ -58,11 +58,8 @@ public class GestorStock implements SePuedeComprar{
 	public boolean sePuedeAlquilar(Cliente c) {
 		// se comprueba que el cliente cumpla los requisitos minimos para poder alquilar cierto juego
 		//como pueden ser: Tener la suscripcion, tener la edad adecuada para el juego,...
-		if(c.getAño_nac() <= 2000){
 			return true;
-		}
 		
-		return false;
 	}
 	
 	

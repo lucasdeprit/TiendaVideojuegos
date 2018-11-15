@@ -9,9 +9,15 @@ import logica.Viideojuego;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaCategorias {
@@ -92,19 +98,63 @@ public class VentanaCategorias {
 		frmCategorias.getContentPane().add(btnSalir);
 		connection = BD.initBD("BD");
 		statement = BD.CrearTablasBD(connection);
+		insertarDatosBD();
 		misVideojuegos = BD.videojuegoSelect(statement);
 		
 	}
 	
+	private void insertarDatosBD() {
+		List<String> generos = new ArrayList<String>();
+		FileReader file;
+		try {
+			file = new FileReader("generos.txt");
+			BufferedReader bf = new BufferedReader(file);
+			String line = null;
+			while((line = bf.readLine()) != null){
+				BD.generoInsert(statement, line);
+			}
+			bf.close();
+			file.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ArrayList<String> videojuegos = new ArrayList<String>();
+		FileReader fr;
+		try {
+			fr = new FileReader("videojuegos.txt");
+			BufferedReader bf = new BufferedReader(fr);
+			String  line = null;
+			while((line = bf.readLine()) != null){
+				String [] valores = line.split(",");
+				BD.videojuegoInsert(statement, line, valores[2], valores[0], valores[1], valores[3]);
+			}
+			bf.close();
+			fr.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	/*
 	private void cargarDeBD() {
 		Connection con = BD.initBD( "genero.bd" );
 		Statement stat = BD.CrearTablasBD( con );
 		ArrayList<String> lG = BD.generoSelect( stat, "" );
 		if (lG==null || lG.isEmpty()) return;  // No hay datos en tablas
-		Viideojuego miVideojuego = new Viideojuego( 0, lG.get(0), 0, null, null, null, null, 0 );  // Crear videojuego con nombre de BD
+		Viideojuego miVideojuego = new Viideojuego(lG.get(0));  // Crear videojuego con nombre de BD
 		ArrayList<String> lGenEnBD = BD.generoSelect( stat, "" );
 		for (String genero : lGenEnBD) {  // Crear generos
 			miVideojuego.setGenero(genero);;
 		}
 	}
+	*/
 }
