@@ -101,7 +101,7 @@ public class VentanaCategorias {
 		Statement stat = BD.CrearTablasBD( con );
 		ArrayList<String> lG = BD.generoSelect( stat, "" );
 		if (lG==null || lG.isEmpty()) return;  // No hay datos en tablas
-		miVideojuego = new Viideojuego( 0, lG.get(0), 0, null, null, null, null, 0 );  // Crear videojuego con nombre de BD
+		Viideojuego miVideojuego = new Viideojuego( 0, lG.get(0), 0, null, null, null, null, 0 );  // Crear videojuego con nombre de BD
 		ArrayList<String> lGenEnBD = BD.generoSelect( stat, "" );
 		for (String genero : lGenEnBD) {  // Crear generos
 			miVideojuego.setGenero(genero);;

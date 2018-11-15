@@ -4,11 +4,11 @@ public class Viideojuego{
 
 	private int  ID;
 	private String nombre;
-	private int edad;
+	//private int edad;
 	private Genero genero;
-	private String Marca;
-	private String plataforma;
-	private String descripcion;
+	//private String Marca;
+	//private String plataforma;
+	//private String descripcion;
 	private double precio;
 	
 	
@@ -18,11 +18,11 @@ public class Viideojuego{
 		super();
 		ID = -1;
 		this.nombre = "";
-		this.edad = -1;
+		//this.edad = -1;
 		this.genero = null;
-		Marca = "";
-		this.plataforma = "";
-		this.descripcion = "";
+		//Marca = "";
+		//this.plataforma = "";
+		//this.descripcion = "";
 		this.precio = -1;
 	}
 
@@ -32,11 +32,11 @@ public class Viideojuego{
 		super();
 		ID = iD;
 		this.nombre = nombre;
-		this.edad = edad;
+		//this.edad = edad;
 		this.genero = genero;
-		Marca = marca;
-		this.plataforma = plataforma;
-		this.descripcion = descripcion;
+		//Marca = marca;
+		//this.plataforma = plataforma;
+		//this.descripcion = descripcion;
 		this.precio = precio;
 	}
 	
@@ -59,19 +59,19 @@ public class Viideojuego{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getEdad() {
+	/*public int getEdad() {
 		return edad;
 	}
 	public void setEdad(int edad) {
 		this.edad = edad;
-	}
+	}*/
 	public Genero getGenero() {
 		return genero;
 	}
-	public void setGenero(Genero genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	public String getMarca() {
+	/*public String getMarca() {
 		return Marca;
 	}
 	public void setMarca(String marca) {
@@ -88,7 +88,7 @@ public class Viideojuego{
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
+	}*/
 	
 	@Override
 	public String toString() {
