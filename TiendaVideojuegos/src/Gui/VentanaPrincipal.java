@@ -22,7 +22,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		this.setSize(500 , 500 );
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	private void inicializarComponentes() throws IOException {
