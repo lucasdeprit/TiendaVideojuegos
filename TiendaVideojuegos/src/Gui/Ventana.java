@@ -68,7 +68,7 @@ public class Ventana extends JFrame {
 		fondo.setBackground(Color.LIGHT_GRAY);
 		setContentPane(fondo);
 		getContentPane().setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		aceptar = new JButton("Aceptar");
 		aceptar.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("deprecation")
@@ -82,9 +82,9 @@ public class Ventana extends JFrame {
 					JOptionPane.showMessageDialog(null, "Nombre y/o contraseña incorrectos", "Error en el Loggin", JOptionPane.WARNING_MESSAGE);
 					setVisible(false);
 					dispose();
-					VentanaCategorias categorias= new VentanaCategorias();
-					categorias.setResizable(false);
-					categorias.setVisible(true);
+					//VentanaCategorias categorias= new VentanaCategorias();
+					//categorias.categorias;
+					//categorias.setVisible(true);
 				}
 				System.out.println(nombre+contrasena);
 				
