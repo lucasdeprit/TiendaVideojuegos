@@ -64,7 +64,7 @@ public class Viideojuego{
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}*/
-	public Genero getGenero() {
+	public String getGenero() {
 		return genero;
 	}
 	public void setGenero(String genero) {
