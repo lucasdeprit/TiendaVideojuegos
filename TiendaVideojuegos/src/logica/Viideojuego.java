@@ -5,7 +5,7 @@ public class Viideojuego{
 	private int  ID;
 	private String nombre;
 	//private int edad;
-	private Genero genero;
+	private String genero;
 	//private String Marca;
 	//private String plataforma;
 	//private String descripcion;
@@ -27,7 +27,7 @@ public class Viideojuego{
 	}
 
 
-	public Viideojuego(int iD, String nombre, Genero genero,String descripcion, double precio) {
+	public Viideojuego(int iD, String nombre, String genero, double precio) {
 		super();
 		ID = iD;
 		this.nombre = nombre;
@@ -67,7 +67,7 @@ public class Viideojuego{
 	public Genero getGenero() {
 		return genero;
 	}
-	public void setGenero(Genero genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	/*public String getMarca() {

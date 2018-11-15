@@ -47,7 +47,7 @@ public class BD {
 			}
 			try {
 				statement.executeUpdate("create table videojuego "
-						+ "(genero_nombre string, id integer , videojuego_nombre string, marca string, plataforma string, descripcion string, edad integer, precio double )");
+						+ "(id integer , nombre string,genero_nombre string, precio double )");
 			} catch (SQLException e) {
 
 			}
@@ -111,7 +111,7 @@ public class BD {
 		String sentSQL = "";
 		ArrayList<String> ret = new ArrayList<>();
 		try {
-			sentSQL = "select * from hotel";
+			sentSQL = "select * from genero";
 			if (codigoSelect != null && !codigoSelect.equals(""))
 				sentSQL = sentSQL + " where " + codigoSelect;
 			ResultSet rs = st.executeQuery(sentSQL);
@@ -130,13 +130,12 @@ public class BD {
 //	Operaciones VIDEOJUEGO
 
 	public static boolean videojuegoInsert(Statement st, Viideojuego v, String genero_nombre, int id,
-			String videojuego_nombre, String marca, String plataforma, String descripcion, int edad, double precio) {
+			String nombre, String marca, String plataforma, String descripcion, int edad, double precio) {
 		String sentSQL = "";
 		try {
 			sentSQL = "insert into reserva values(" + "'" + securizar(v.getNombre()) + "'," + "'"
-					+ securizar(genero_nombre) + "'," + id + "," + securizar(videojuego_nombre) + "',"
-					+ securizar(marca) + "'," + securizar(plataforma) + "'," + securizar(descripcion) + "'," + edad
-					+ "'," + precio + "',";
+					+ securizar(genero_nombre) + "'," + id + "," + securizar(nombre) + "',"
+					+ "'," + edad+ "'," + precio + "',";
 			int val = st.executeUpdate(sentSQL);
 			if (val != 1) { // Se tiene que añadir 1 - error si no
 				return false;
@@ -158,7 +157,7 @@ public class BD {
 			ResultSet rs = st.executeQuery(sentSQL);
 			rs.close();
 			while(rs.next()) {
-				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre").rs.get)));
+				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre"),rs.getString("genero"),rs.getDouble("precio")));
 			}
 			
 		} catch (SQLException e) {
@@ -166,9 +165,10 @@ public class BD {
 			e.printStackTrace();
 			return null;
 		}
+		return videojuegos;
 	}
 
-	public static Object videojuegoSelect(Statement st, Viideojuego v, String genero_nombre, int id,
+	/* public static Object videojuegoSelect(Statement st, Viideojuego v, String genero_nombre, int id,
 			String videojuego_nombre, String marca, String plataforma, String descripcion, int edad, double precio,
 			String codigoSelect) {
 		if (v == null || genero_nombre == null || genero_nombre.isEmpty())
@@ -197,7 +197,8 @@ public class BD {
 			return null;
 		}
 	}
-
+*/
+	
 //  Metodos privados
 
 	private static String securizar(String string) { // comprobar que el string añadido tiene caracteres coherentes
