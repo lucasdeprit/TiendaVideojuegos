@@ -59,7 +59,7 @@ public class Vregistrar extends JFrame{
 		setSize(460,296);
 		setAutoRequestFocus(false);
 		setTitle("Registrarse");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		lblNombre.setBounds(32, 30, 61, 22);
 		getContentPane().add(lblNombre);
