@@ -78,9 +78,12 @@ public class VentanaPrincipal extends Hilo implements ActionListener {
 		
 	}
 	public static void main(String[] args) throws IOException {
-		VentanaPrincipal V = new VentanaPrincipal(); // creamos la ventana	
-		V.setVisible(true);							 // hacemos la ventana visible
+		
+		VentanaPrincipal V = new VentanaPrincipal();
+		// creamos la ventana	
 		conteo(V);
+		V.setVisible(true);							 // hacemos la ventana visible
+		
 	}
 }
 
