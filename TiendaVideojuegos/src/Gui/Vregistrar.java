@@ -4,16 +4,25 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+
+import bd.BD;
+import logica.Hilo;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
 import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 public class Vregistrar extends JFrame{
+	
+	public static Logger logger = Logger.getLogger(Vregistrar.class.getName()) ;
+	
 	private JPasswordField passwordField;
 	JLabel lblNombre = new JLabel("Nombre:");
 	JLabel lblApellidos = new JLabel("Apellidos:");
@@ -34,7 +43,7 @@ public class Vregistrar extends JFrame{
 		String texto = nombretxt.getText();
 	    String nombre = "usuarios.txt";
 	    try{
-	      FileWriter fichero = new FileWriter("C:\\Users\\Aitor Morais\\git\\TiendaVideojuegos\\TiendaVideojuegos"+nombre);
+	      FileWriter fichero = new FileWriter("C:\\Users\\Joel\\git\\TiendaVideojuegos\\TiendaVideojuegos"+nombre);
 	      //Insertamos el texto creado y si trabajamos
 	      //en Windows terminaremos cada línea con "\r\n"
 	      fichero.write("Nombre:"+texto + "\r\n");
@@ -91,12 +100,16 @@ public class Vregistrar extends JFrame{
 			@Override
 			public void mouseClicked(MouseEvent c) {
 				guardarDatosusuario();
+				
 			}
 		});
 		btnAceptar.setBounds(0, 215, 97, 25);
 		getContentPane().add(btnAceptar);
 		checkCondiciones.setBounds(94, 215, 373, 25);
 		getContentPane().add(checkCondiciones);
+		
+		
+		
 	}
 	
 	

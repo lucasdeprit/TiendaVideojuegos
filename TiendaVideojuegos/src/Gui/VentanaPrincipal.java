@@ -77,12 +77,20 @@ public class VentanaPrincipal extends Hilo implements ActionListener {
 		JOptionPane.showMessageDialog(this, " Inicio de Sesion " +   ".");
 		
 	}
-	public static void main(String[] args) throws IOException {
+	
+	public static void main(String[] args) {
 		
-		VentanaPrincipal V = new VentanaPrincipal();
+		VentanaPrincipal V;
+		try {
+			V = new VentanaPrincipal();
+			V.setVisible(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// creamos la ventana	
-		conteo(V);
-		V.setVisible(true);							 // hacemos la ventana visible
+		//conteo(V);
+									 // hacemos la ventana visible
 		
 	}
 }
