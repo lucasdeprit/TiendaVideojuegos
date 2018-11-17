@@ -8,7 +8,9 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class VentanaPrincipal extends JFrame implements ActionListener {
+import logica.Hilo;
+
+public class VentanaPrincipal extends Hilo implements ActionListener {
 	private JButton boton, boton2;
 	
 	public VentanaPrincipal() throws IOException {
@@ -78,6 +80,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	public static void main(String[] args) throws IOException {
 		VentanaPrincipal V = new VentanaPrincipal(); // creamos la ventana	
 		V.setVisible(true);							 // hacemos la ventana visible
+		conteo(V);
 	}
 }
 
