@@ -131,7 +131,7 @@ public class VentanaCategorias {
 			String  line = null;
 			while((line = bf.readLine()) != null){
 				String [] valores = line.split(",");
-				BD.videojuegoInsert(statement,"" ,0 ,"" ,0 );
+				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
 			}
 			bf.close();
 			fr.close();

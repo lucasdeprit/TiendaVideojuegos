@@ -50,60 +50,39 @@ public class Vregistrar extends JFrame {
 	private JTextField Nick;
 	private JTextField Contrasena;
 
-//	public void Enviar_datos() {
-//		
-//		try {
-//			
-//			java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-//			
-//			
-//			String nombre = Nombre.getText();
-//			String apellidos = Apellidos.getText();
-//			String edad = Edad.getText();
-//			String correo = DireccionCorreo.getText();
-//			String nick = Nick.getText();
-//			String contrasena = Contrasena.getText();
-//			
-//			String consulta = "INSERT INTO registros(NOMBRE,APELLIDOS,EDAD,CORREO ELECTRONICO,NICK,CONTRASEÑA) VALUES('"+nombre+ "','"+apellidos+ "', '"+edad+"', '"+correo+ "', '"+nick+ "','"+contrasena+ "')";
-//			
-//			Statement stmt = conexion.createStatement();
-//			
-//			stmt.executeUpdate(consulta);
-//			
-//			JOptionPane.showMessageDialog(null, "Producto agregado");
-//			
-//		}catch(Exception e) {
-//			e.getStackTrace();
-//			JOptionPane.showMessageDialog(null, "Producto no agregado");
-//		}
-//	}
+	public void Enviar_datos() {
+		
+		try {
 
-//	public void guardarDatosusuario() {
-//		//
-//		int edad;
-//		String texto = nombretxt.getText();
-//	    String nombre = "usuarios.txt";
-//	    try{
-//	      FileWriter fichero = new FileWriter("C:\\Users\\Joel\\git\\TiendaVideojuegos\\TiendaVideojuegos"+nombre);
-//	      //Insertamos el texto creado y si trabajamos
-//	      //en Windows terminaremos cada línea con "\r\n"
-//	      fichero.write("Nombre:"+texto + "\r\n");
-//	      texto=apellidostxt.getText();
-//	      fichero.write("Apellidos:"+texto + "\r\n");
-//	      texto=correotxt.getText();
-//	      fichero.write("Correo:"+texto + "\r\n");
-//	      texto=nicktxt.getText();
-//	      fichero.write("Nick:"+texto + "\r\n");
-//	      texto=passwordField.getText();
-//	      fichero.write("Pass:"+texto + "\r\n");
-//	    // edad= spinneredad.get;
-//	      //cerramos el fichero
-//	      fichero.close();
-//
-//	    }catch(Exception ex){
-//	      ex.printStackTrace();
-//	    }
-//	}
+			String sDriver = "com.mysql.jdbc.Driver";
+			Class.forName(sDriver).newInstance();
+			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root",
+					"");
+
+			if (conexion != null) {
+
+				JOptionPane.showMessageDialog(null, "Conectado correctamente a la base de datos");
+
+				PreparedStatement stmt = conexion.prepareStatement("INSERT INTO registros VALUES(?,?,?,?,?,?)");
+
+				stmt.setString(1, Nombre.getText());
+				stmt.setString(2, Apellidos.getText());
+				stmt.setInt(3, Integer.parseInt(Edad.getText()));
+				stmt.setString(4, DireccionCorreo.getText());
+				stmt.setString(5, Nick.getText());
+				stmt.setString(6, Contrasena.getText());
+
+				stmt.executeUpdate();
+
+				JOptionPane.showMessageDialog(null, "Producto agregado");
+			}
+
+		} catch (Exception e) {
+			e.getStackTrace();
+			JOptionPane.showMessageDialog(null, "Producto no agregado");
+		}
+	}
+
 	public Vregistrar() {
 		setResizable(false);
 		setSize(460, 296);
@@ -126,49 +105,8 @@ public class Vregistrar extends JFrame {
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent c) {
-//				try {
-//					java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-//					
-//					if(conexion!=null) {
-//						System.out.println("Conectado correctamente a la base de datos");
-//						System.out.println("Almacenado en base de datos");
-//					}
-//				}catch(Exception e) {
-//					e.getStackTrace();
-//					System.out.println("Error al conectar a la base de datos");
-//				}
-				try {
-
-					String sDriver = "com.mysql.jdbc.Driver";
-					Class.forName(sDriver).newInstance();
-					java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/registros",
-							"root", "");
-
-					if (conexion != null) {
-
-						JOptionPane.showMessageDialog(null, "Conectado correctamente a la base de datos");
-
-						PreparedStatement stmt = conexion.prepareStatement("INSERT INTO registros VALUES(?,?,?,?,?,?)");
-
-						stmt.setString(1, Nombre.getText());
-						stmt.setString(2, Apellidos.getText());
-						stmt.setInt(3, Integer.parseInt(Edad.getText()));
-						stmt.setString(4, DireccionCorreo.getText());
-						stmt.setString(5, Nick.getText());
-						stmt.setString(6, Contrasena.getText());
-
-						stmt.executeUpdate();
-
-						JOptionPane.showMessageDialog(null, "Producto agregado");
-					}
-
-				} catch (Exception e) {
-					e.getStackTrace();
-					JOptionPane.showMessageDialog(null, "Producto no agregado");
-				}
-
+				Enviar_datos();
 			}
-
 		});
 		btnAceptar.setBounds(0, 215, 97, 25);
 		getContentPane().add(btnAceptar);
@@ -205,16 +143,6 @@ public class Vregistrar extends JFrame {
 		Contrasena.setBounds(184, 172, 201, 20);
 		getContentPane().add(Contrasena);
 
-//		try {
-//			java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-//			
-//			if(conexion!=null) {
-//				JOptionPane.showInputDialog(null,"Conectado correctamente a la base de datos");
-//			}
-//		}catch(Exception e) {
-//			e.getStackTrace();
-//			JOptionPane.showInputDialog(null,"Error al conectar a la base de datos");
-//		}
 
 	}
 }
