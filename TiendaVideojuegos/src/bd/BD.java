@@ -131,11 +131,11 @@ public class BD {
 
 //	Operaciones VIDEOJUEGO
 
-	public static boolean videojuegoInsert(Statement st, Viideojuego v, String genero_nombre, int id,
+	public static boolean videojuegoInsert(Statement st, String genero_nombre, int id,
 			String nombre,double precio) {
 		String sentSQL = "";
 		try {
-			sentSQL = "insert into reserva values(" + "'" + securizar(v.getNombre()) + "'," + "'"
+			sentSQL = "insert into reserva values('"
 					+ securizar(genero_nombre) + "'," + id + "," + securizar(nombre) + "',"
 					+ "',"+ precio + "',";
 			int val = st.executeUpdate(sentSQL);
