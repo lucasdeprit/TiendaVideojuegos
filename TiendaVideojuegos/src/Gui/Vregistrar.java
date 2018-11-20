@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,26 +49,28 @@ public class Vregistrar extends JFrame{
 	public void Enviar_datos() {
 		
 		try {
-			final String consulta = "INSERT INTO registros(NOMBRE,APELLIDOS,EDAD,CORREO ELECTRONICO,NICK,CONTRASEÑA) VALUES(?,?,?,?,?,?)";
-			PreparedStatement sentencia = conexion.prepareStatement(consulta);
-			sentencia.setString(1, Nombre.getText());
-			sentencia.setString(2, Apellidos.getText());
-			sentencia.setString(3, Edad.getText());
-			sentencia.setString(4, DireccionCorreo.getText());
-			sentencia.setString(5, Nick.getText());
-			sentencia.setString(6, Contrasena.getText());
 			
-			sentencia.executeUpdate();
-			Nombre.setText("");
-			Apellidos.setText("");
-			Edad.setText("");
-			DireccionCorreo.setText("");
-			Nick.setText("");
-			Contrasena.setText("");
+			java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
+			
+			
+			String nombre = Nombre.getText();
+			String apellidos = Apellidos.getText();
+			String edad = Edad.getText();
+			String correo = DireccionCorreo.getText();
+			String nick = Nick.getText();
+			String contrasena = Contrasena.getText();
+			
+			String consulta = "INSERT INTO registros(NOMBRE,APELLIDOS,EDAD,CORREO ELECTRONICO,NICK,CONTRASEÑA) VALUES('"+nombre+ "','"+apellidos+ "', '"+edad+"', '"+correo+ "', '"+nick+ "','"+contrasena+ "')";
+			
+			Statement stmt = conexion.createStatement();
+			
+			stmt.executeUpdate(consulta);
+			
+			JOptionPane.showMessageDialog(null, "Producto agregado");
 			
 		}catch(Exception e) {
 			e.getStackTrace();
-			JOptionPane.showInputDialog(null,"Error al conectar a la base de datos");
+			JOptionPane.showMessageDialog(null, "Producto no agregado");
 		}
 	}
 	
@@ -119,6 +122,17 @@ public class Vregistrar extends JFrame{
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent c) {
+//				try {
+//					java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
+//					
+//					if(conexion!=null) {
+//						System.out.println("Conectado correctamente a la base de datos");
+//						System.out.println("Almacenado en base de datos");
+//					}
+//				}catch(Exception e) {
+//					e.getStackTrace();
+//					System.out.println("Error al conectar a la base de datos");
+//				}
 				Enviar_datos();
 				
 			}
@@ -158,12 +172,16 @@ public class Vregistrar extends JFrame{
 		Contrasena.setBounds(184, 172, 201, 20);
 		getContentPane().add(Contrasena);
 		
-		try {
-			conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-		}catch(Exception e) {
-			e.getStackTrace();
-			JOptionPane.showInputDialog(null,"Error al conectar a la base de datos");
-		}
+//		try {
+//			java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
+//			
+//			if(conexion!=null) {
+//				JOptionPane.showInputDialog(null,"Conectado correctamente a la base de datos");
+//			}
+//		}catch(Exception e) {
+//			e.getStackTrace();
+//			JOptionPane.showInputDialog(null,"Error al conectar a la base de datos");
+//		}
 		
 		
 		
