@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JFrame;
+import javax.swing.text.Document;
 
 import Gui.VentanaPrincipal;
 
@@ -27,6 +28,8 @@ public static void espera() {
 			espera();
 			if (segundos== 5) {
 				logger.warning("Fin del hilo");
+				
+			}while (Document.onmousemove()==true) {
 				
 			}
 			
