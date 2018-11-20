@@ -1,4 +1,4 @@
-001,uncharted 4,ACCIÓN ,60
-002,black ops 3,ACCIÓN,40
-003,forza motorsport 7, CARRERAS,59.5
-004,black ops 4,ACCIÓN,62.5
+ACCIÓN,001,uncharted 4 ,60
+ACCIÓN,002,black ops3,40
+CARRERAS,003,forza motorsport 7,59.5
+ACCIÓN,004,black ops 4,62.5

@@ -1,4 +1,5 @@
 package Gui;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,9 +29,12 @@ import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Vregistrar extends JFrame{
+public class Vregistrar extends JFrame {
+
 	private Connection conexion;
-	public static Logger logger = Logger.getLogger(Vregistrar.class.getName()) ;
+
+	public static Logger logger = Logger.getLogger(Vregistrar.class.getName());
+
 	JLabel lblNombre = new JLabel("Nombre:");
 	JLabel lblApellidos = new JLabel("Apellidos:");
 	JLabel lblEdad = new JLabel("Edad:");
@@ -49,60 +53,39 @@ public class Vregistrar extends JFrame{
 	public void Enviar_datos() {
 		
 		try {
-			
-			java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-			
-			
-			String nombre = Nombre.getText();
-			String apellidos = Apellidos.getText();
-			String edad = Edad.getText();
-			String correo = DireccionCorreo.getText();
-			String nick = Nick.getText();
-			String contrasena = Contrasena.getText();
-			
-			String consulta = "INSERT INTO registros(NOMBRE,APELLIDOS,EDAD,CORREO ELECTRONICO,NICK,CONTRASEÑA) VALUES('"+nombre+ "','"+apellidos+ "', '"+edad+"', '"+correo+ "', '"+nick+ "','"+contrasena+ "')";
-			
-			Statement stmt = conexion.createStatement();
-			
-			stmt.executeUpdate(consulta);
-			
-			JOptionPane.showMessageDialog(null, "Producto agregado");
-			
-		}catch(Exception e) {
+
+			String sDriver = "com.mysql.jdbc.Driver";
+			Class.forName(sDriver).newInstance();
+			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root",
+					"");
+
+			if (conexion != null) {
+
+				JOptionPane.showMessageDialog(null, "Conectado correctamente a la base de datos");
+
+				PreparedStatement stmt = conexion.prepareStatement("INSERT INTO registros VALUES(?,?,?,?,?,?)");
+
+				stmt.setString(1, Nombre.getText());
+				stmt.setString(2, Apellidos.getText());
+				stmt.setInt(3, Integer.parseInt(Edad.getText()));
+				stmt.setString(4, DireccionCorreo.getText());
+				stmt.setString(5, Nick.getText());
+				stmt.setString(6, Contrasena.getText());
+
+				stmt.executeUpdate();
+
+				JOptionPane.showMessageDialog(null, "Producto agregado");
+			}
+
+		} catch (Exception e) {
 			e.getStackTrace();
 			JOptionPane.showMessageDialog(null, "Producto no agregado");
 		}
 	}
-	
-//	public void guardarDatosusuario() {
-//		//
-//		int edad;
-//		String texto = nombretxt.getText();
-//	    String nombre = "usuarios.txt";
-//	    try{
-//	      FileWriter fichero = new FileWriter("C:\\Users\\Joel\\git\\TiendaVideojuegos\\TiendaVideojuegos"+nombre);
-//	      //Insertamos el texto creado y si trabajamos
-//	      //en Windows terminaremos cada línea con "\r\n"
-//	      fichero.write("Nombre:"+texto + "\r\n");
-//	      texto=apellidostxt.getText();
-//	      fichero.write("Apellidos:"+texto + "\r\n");
-//	      texto=correotxt.getText();
-//	      fichero.write("Correo:"+texto + "\r\n");
-//	      texto=nicktxt.getText();
-//	      fichero.write("Nick:"+texto + "\r\n");
-//	      texto=passwordField.getText();
-//	      fichero.write("Pass:"+texto + "\r\n");
-//	    // edad= spinneredad.get;
-//	      //cerramos el fichero
-//	      fichero.close();
-//
-//	    }catch(Exception ex){
-//	      ex.printStackTrace();
-//	    }
-//	}
+
 	public Vregistrar() {
 		setResizable(false);
-		setSize(460,296);
+		setSize(460, 296);
 		setAutoRequestFocus(false);
 		setTitle("Registrarse");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -122,68 +105,44 @@ public class Vregistrar extends JFrame{
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent c) {
-//				try {
-//					java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-//					
-//					if(conexion!=null) {
-//						System.out.println("Conectado correctamente a la base de datos");
-//						System.out.println("Almacenado en base de datos");
-//					}
-//				}catch(Exception e) {
-//					e.getStackTrace();
-//					System.out.println("Error al conectar a la base de datos");
-//				}
 				Enviar_datos();
-				
 			}
 		});
 		btnAceptar.setBounds(0, 215, 97, 25);
 		getContentPane().add(btnAceptar);
 		checkCondiciones.setBounds(94, 215, 373, 25);
 		getContentPane().add(checkCondiciones);
-		
+
 		Nombre = new JTextField();
 		Nombre.setBounds(184, 29, 109, 22);
 		getContentPane().add(Nombre);
 		Nombre.setColumns(10);
-		
+
 		Apellidos = new JTextField();
 		Apellidos.setBounds(184, 57, 201, 20);
 		getContentPane().add(Apellidos);
 		Apellidos.setColumns(10);
-		
+
 		Edad = new JTextField();
 		Edad.setBounds(184, 88, 28, 20);
 		getContentPane().add(Edad);
 		Edad.setColumns(10);
-		
+
 		DireccionCorreo = new JTextField();
 		DireccionCorreo.setBounds(184, 118, 201, 20);
 		getContentPane().add(DireccionCorreo);
 		DireccionCorreo.setColumns(10);
-		
+
 		Nick = new JTextField();
 		Nick.setColumns(10);
 		Nick.setBounds(184, 145, 201, 20);
 		getContentPane().add(Nick);
-		
+
 		Contrasena = new JTextField();
 		Contrasena.setColumns(10);
 		Contrasena.setBounds(184, 172, 201, 20);
 		getContentPane().add(Contrasena);
-		
-//		try {
-//			java.sql.Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root", "");
-//			
-//			if(conexion!=null) {
-//				JOptionPane.showInputDialog(null,"Conectado correctamente a la base de datos");
-//			}
-//		}catch(Exception e) {
-//			e.getStackTrace();
-//			JOptionPane.showInputDialog(null,"Error al conectar a la base de datos");
-//		}
-		
-		
-		
+
+
 	}
 }
