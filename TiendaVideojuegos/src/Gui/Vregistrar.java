@@ -8,7 +8,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 import bd.BD;
-import logica.Hilo;
+import logica.NotifyingThread;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -49,6 +49,7 @@ public class Vregistrar extends JFrame {
 	private JTextField DireccionCorreo;
 	private JTextField Nick;
 	private JTextField Contrasena;
+	
 
 	public void Enviar_datos() {
 		
