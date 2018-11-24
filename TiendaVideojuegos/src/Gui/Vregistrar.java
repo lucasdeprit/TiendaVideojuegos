@@ -83,6 +83,12 @@ public class Vregistrar extends JFrame {
 			JOptionPane.showMessageDialog(null, "Producto no agregado");
 		}
 	}
+	public void Coger_datos (){
+		
+		// metodo que coja los datos de la bdd 
+		
+		
+	}
 
 	public Vregistrar() {
 		setResizable(false);
