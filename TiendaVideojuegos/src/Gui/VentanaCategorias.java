@@ -85,63 +85,24 @@ public class VentanaCategorias {
 		frmCategorias.getContentPane().add(btnCarreras);
 		
 		JButton button_5 = new JButton("ACCION");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		button_5.setBounds(10, 17, 113, 34);
 		frmCategorias.getContentPane().add(button_5);
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 			}
 		});
 		btnSalir.setBounds(164, 216, 113, 34);
 		frmCategorias.getContentPane().add(btnSalir);
 		connection = BD.initBD("BD");
 		statement = BD.CrearTablasBD(connection);
-		insertarDatosBD();
 		misVideojuegos = BD.videojuegoSelect(statement);
-		
-	}
-	
-	private void insertarDatosBD() {
-		List<String> generos = new ArrayList<String>();
-		FileReader file;
-		try {
-			file = new FileReader("generos.txt");
-			BufferedReader bf = new BufferedReader(file);
-			String line = null;
-			while((line = bf.readLine()) != null){
-				BD.generoInsert(statement, line);
-			}
-			bf.close();
-			file.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<String> videojuegos = new ArrayList<String>();
-		FileReader fr;
-		try {
-			fr = new FileReader("videojuegos.txt");
-			BufferedReader bf = new BufferedReader(fr);
-			String  line = null;
-			while((line = bf.readLine()) != null){
-				String [] valores = line.split(",");
-				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-			}
-			bf.close();
-			fr.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 	/*

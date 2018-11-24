@@ -101,6 +101,7 @@ public class BD {
 
 	public static boolean generoInsert(Statement st, String genero) {
 		String sentSQL = "";
+		insertarDatosGeneroBD();
 		try {
 			sentSQL = "insert into genero values(" + "'" + securizar(genero) + "')";
 			int val = st.executeUpdate(sentSQL);
@@ -140,7 +141,7 @@ public class BD {
 	public static boolean videojuegoInsert(Statement st, String genero_nombre, int id,
 			String nombre,double precio) {
 		String sentSQL = "";
-		insertarDatosBD();
+		insertarDatosVideojuegoBD();
 		try {
 			sentSQL = "insert into reserva values('"
 					+ securizar(genero_nombre) + "'," + id + "," + securizar(nombre) + "',"
@@ -241,7 +242,7 @@ public class BD {
 		return ret.toString();
 	}
 	
-	private static void insertarDatosBD() {
+	private static void insertarDatosGeneroBD() {
 		
 		FileReader file;
 		try {
@@ -260,8 +261,9 @@ public class BD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 		
-		
+	private static void insertarDatosVideojuegoBD() {	
 		FileReader fr;
 		try {
 			fr = new FileReader("videojuegos.txt");
