@@ -1,11 +1,16 @@
 package bd;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +19,7 @@ import logica.Viideojuego;
 public class BD {
 
 	private static Exception lastError = null;
+	private static Statement statement;
 
 	public static Connection initBD(String nombreBD) {
 		try {
@@ -134,6 +140,7 @@ public class BD {
 	public static boolean videojuegoInsert(Statement st, String genero_nombre, int id,
 			String nombre,double precio) {
 		String sentSQL = "";
+		insertarDatosBD();
 		try {
 			sentSQL = "insert into reserva values('"
 					+ securizar(genero_nombre) + "'," + id + "," + securizar(nombre) + "',"
@@ -168,6 +175,27 @@ public class BD {
 			return null;
 		}
 		return videojuegos;
+	}
+	
+	public static ArrayList <Viideojuego> videoJuegoCategoria (Statement st , String categoria){
+		String sentSQL = "";
+		ArrayList<Viideojuego> videojuegos= new ArrayList<>();
+		try {
+			sentSQL = "select * from videojuego when genero = " +  categoria  ;
+			
+			ResultSet rs = st.executeQuery(sentSQL);
+			
+			while(rs.next()) {
+				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre"),rs.getString("genero"),rs.getDouble("precio")));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		}
+		return videojuegos;
+		
 	}
 
 	/* public static Object videojuegoSelect(Statement st, Viideojuego v, String genero_nombre, int id,
@@ -213,6 +241,47 @@ public class BD {
 		return ret.toString();
 	}
 	
+	private static void insertarDatosBD() {
+		
+		FileReader file;
+		try {
+			file = new FileReader("generos.txt");
+			BufferedReader bf = new BufferedReader(file);
+			String line = null;
+			while((line = bf.readLine()) != null){
+				BD.generoInsert(statement, line);
+			}
+			bf.close();
+			file.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		FileReader fr;
+		try {
+			fr = new FileReader("videojuegos.txt");
+			BufferedReader bf = new BufferedReader(fr);
+			String  line = null;
+			while((line = bf.readLine()) != null){
+				String [] valores = line.split(",");
+				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+			}
+			bf.close();
+			fr.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 
 }

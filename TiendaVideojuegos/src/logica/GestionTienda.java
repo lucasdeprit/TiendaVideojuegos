@@ -1,4 +1,4 @@
-package logica;
+             package logica;
 
 import java.util.HashMap;
 
@@ -35,4 +35,6 @@ public class GestionTienda {
 		
 	}
 
+	
+	
 }
