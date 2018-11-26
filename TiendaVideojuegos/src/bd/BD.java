@@ -158,6 +158,10 @@ public class BD {
 		}
 	}
 	
+	
+	
+	
+	
 	public static ArrayList<Viideojuego> videojuegoSelect(Statement st) {
 		String sentSQL = "";
 		ArrayList<Viideojuego> videojuegos= new ArrayList<>();
@@ -167,7 +171,7 @@ public class BD {
 			ResultSet rs = st.executeQuery(sentSQL);
 			
 			while(rs.next()) {
-				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre"),rs.getString("genero"),rs.getDouble("precio")));
+				videojuegos.add(new Viideojuego(rs.getString("genero"),rs.getInt("id"),rs.getString("nombre"),rs.getDouble("precio")));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -187,7 +191,7 @@ public class BD {
 			ResultSet rs = st.executeQuery(sentSQL);
 			
 			while(rs.next()) {
-				videojuegos.add(new Viideojuego(rs.getInt("id"), rs.getString("nombre"),rs.getString("genero"),rs.getDouble("precio")));
+				videojuegos.add(new Viideojuego(rs.getString("genero"),rs.getInt("id"), rs.getString("nombre"),rs.getDouble("precio")));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -242,8 +246,7 @@ public class BD {
 		return ret.toString();
 	}
 	
-	private static void insertarDatosGeneroBD() {
-		
+	public static void insertarDatosGeneroBD() {
 		FileReader file;
 		try {
 			file = new FileReader("generos.txt");
@@ -263,7 +266,7 @@ public class BD {
 		}
 	}
 		
-	private static void insertarDatosVideojuegoBD() {	
+	public static void insertarDatosVideojuegoBD() {	
 		FileReader fr;
 		try {
 			fr = new FileReader("videojuegos.txt");
@@ -271,7 +274,24 @@ public class BD {
 			String  line = null;
 			while((line = bf.readLine()) != null){
 				String [] valores = line.split(",");
-				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+				
+//				if(valores[0] == "ACCION") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}if(valores[0] == "AVENTURA") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}if(valores[0] == "CARRERAS") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}if(valores[0] == "LUCHA") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}if(valores[0] == "ARCADE") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}if(valores[0] == "DEPORTE") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}if(valores[0] == "ESTRATEGIA") {
+//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+//				}else {
+				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );	
+				
 			}
 			bf.close();
 			fr.close();

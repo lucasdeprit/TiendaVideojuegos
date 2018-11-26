@@ -87,8 +87,13 @@ public class VentanaCategorias {
 		JButton button_5 = new JButton("ACCION");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos();
+				videojuegos.setResizable(false);
+				videojuegos.setVisible(true);
 				
 			}
+
+			
 		});
 		button_5.setBounds(10, 17, 113, 34);
 		frmCategorias.getContentPane().add(button_5);

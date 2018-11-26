@@ -17,9 +17,9 @@ public class Viideojuego{
 	public Viideojuego() {
 		super();
 		ID = -1;
+		this.genero = null;
 		this.nombre = "";
 		//this.edad = -1;
-		this.genero = null;
 		//Marca = "";
 		//this.plataforma = "";
 		//this.descripcion = "";
@@ -27,16 +27,16 @@ public class Viideojuego{
 	}
 
 
-	public Viideojuego(int iD, String nombre, String genero, double precio) {
+	public Viideojuego(String genero,int iD, String nombre, double precio) {
 		super();
-		ID = iD;
-		this.nombre = nombre;
-		//this.edad = edad;
 		this.genero = genero;
+		this.ID = iD;
+		this.nombre = nombre;
+		this.precio = precio;
+		//this.edad = edad;
 		//Marca = marca;
 		//this.plataforma = plataforma;
 		//this.descripcion = descripcion;
-		this.precio = precio;
 	}
 	
 	
@@ -88,12 +88,12 @@ public class Viideojuego{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}*/
-	
+
+
 	@Override
 	public String toString() {
-		return "Viideojuego [ID=" + ID + ", nombre=" + nombre + ", genero=" + genero + " , precio=" + precio +"]";
+		return "Viideojuego [genero=" + genero + ",ID=" + ID + ", nombre=" + nombre + ",  precio=" + precio + "]";
 	}
-
 
 	
 	
