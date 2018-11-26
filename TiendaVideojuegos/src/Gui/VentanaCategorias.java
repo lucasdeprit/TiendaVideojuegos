@@ -88,8 +88,7 @@ public class VentanaCategorias {
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Videojuegos videojuegos = new Videojuegos();
-				videojuegos.setResizable(false);
-				videojuegos.setVisible(true);
+				videojuegos.frame.setVisible(true);
 				
 			}
 

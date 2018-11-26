@@ -23,9 +23,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Videojuegos extends JFrame{
-
-	private JFrame frame;
-	private JTable table;
+	
+	JFrame frame;
+	JTable table;
 	private static Statement st;
 	public static List<Viideojuego> listadevideojuegos;
 	public static DefaultTableModel modelotablavideojuegos = new DefaultTableModel(null, new String[]{"Genero", "ID", "Nombre" , "Precio"}){boolean[] columnEditables = new boolean[] {
@@ -39,16 +39,43 @@ public class Videojuegos extends JFrame{
 	public Videojuegos() {
 		initialize();
 	}
+	
+	private void construirTabla() {
+		String titulos[]= {"Genero","ID","Nombre","Precio"};
+		String informacion[][]=obtenerMatriz();
+		table = new JTable(informacion,titulos);
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	private String[][]obtenerMatriz(){
+		return null;
+	}
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setSize(460, 296);
+		setAutoRequestFocus(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		table = new JTable();
+		table.setFillsViewportHeight(true);
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Genero", "ID", "Nombre", "Precio"
+			}
+		));
+		table.setBounds(0, 0, 434, 227);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -60,15 +87,10 @@ public class Videojuegos extends JFrame{
 				ActualizarTabla();
 			}
 		});
-		table.setBounds(10, 11, 414, 216);
+		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(table);
 		
 		JButton btnNewButton = new JButton("Cargar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
 		btnNewButton.setBounds(122, 238, 153, 12);
 		frame.getContentPane().add(btnNewButton);
 	}
