@@ -8,6 +8,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 import bd.BD;
+import logica.CompruebaInactividad;
 import logica.NotifyingThread;
 
 import javax.swing.JTextField;
@@ -31,9 +32,10 @@ import java.awt.event.MouseEvent;
 
 public class Vregistrar extends JFrame {
 
-	private Connection conexion;
+	public Connection conexion;
 
 	public static Logger logger = Logger.getLogger(Vregistrar.class.getName());
+
 
 	JLabel lblNombre = new JLabel("Nombre:");
 	JLabel lblApellidos = new JLabel("Apellidos:");
@@ -85,7 +87,6 @@ public class Vregistrar extends JFrame {
 	}
 
 	public Vregistrar() {
-		Logger logger = null;
 		setResizable(false);
 		setSize(460, 296);
 		setAutoRequestFocus(false);
