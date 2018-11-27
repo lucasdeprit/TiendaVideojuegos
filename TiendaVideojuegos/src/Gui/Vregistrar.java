@@ -83,14 +83,9 @@ public class Vregistrar extends JFrame {
 			JOptionPane.showMessageDialog(null, "Producto no agregado");
 		}
 	}
-	public void Coger_datos (){
-		
-		// metodo que coja los datos de la bdd 
-		
-		
-	}
 
 	public Vregistrar() {
+		Logger logger = null;
 		setResizable(false);
 		setSize(460, 296);
 		setAutoRequestFocus(false);
@@ -112,7 +107,13 @@ public class Vregistrar extends JFrame {
 		btnAceptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent c) {
-				Enviar_datos();
+				if (checkCondiciones.isSelected()) {
+					Enviar_datos();
+				}
+				else {
+					logger.warning("No has aceptado las condiciones");
+				}
+				
 			}
 		});
 		btnAceptar.setBounds(0, 215, 97, 25);

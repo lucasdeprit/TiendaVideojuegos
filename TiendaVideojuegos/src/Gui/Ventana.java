@@ -6,6 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import com.mysql.jdbc.Connection;
+
+import logica.Pool;
+
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import javax.swing.AbstractAction;
@@ -21,6 +31,8 @@ public class Ventana extends JFrame {
 	private JPanel fondo;
 	private JPasswordField pass;
 	JTextArea nombreUsuario ;
+	Pool metodospool = new Pool();
+	
 	
 
 
@@ -58,6 +70,58 @@ public class Ventana extends JFrame {
 	public void setPass(JPasswordField pass) {
 		this.pass = pass;
 	}
+
+//cargar
+	public int validar_ingreso() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		
+	    String usuario = nombreUsuario.getText();
+	    String clave = String.valueOf(pass.getPassword());
+
+	    int resultado=0;
+	    
+	    String SSQL="SELECT * FROM usuarios WHERE usuario='"+usuario+"' AND clave=sha1('"+clave+"')";
+
+	    Connection conect = null;
+
+	    try {
+	    	//
+	    	String sDriver = "com.mysql.jdbc.Driver";
+			Class.forName(sDriver).newInstance();
+			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root",
+					"");
+	        Statement st = conect.createStatement();
+	        ResultSet rs = st.executeQuery(SSQL);
+
+	        if(rs.next()){
+
+	            resultado=1;
+
+	        }
+
+	    } catch (SQLException ex) {
+
+	        JOptionPane.showMessageDialog(null, ex, "Error de conexión", JOptionPane.ERROR_MESSAGE);
+
+	    }finally{
+
+
+	        try {
+
+	            conect.close();
+
+	        } catch (SQLException ex) {
+
+	            JOptionPane.showMessageDialog(null, ex, "Error de desconexión", JOptionPane.ERROR_MESSAGE);
+
+	        }
+
+	    }
+
+	return resultado;
+
+	}
+	
+	//
 
 	public Ventana() {
 		setFont(null);
