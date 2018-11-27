@@ -26,12 +26,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
-public class Videojuegos extends JFrame{
-	
+public class Videojuegos extends JFrame {
+
 	JFrame frame;
 	JTable table;
-	private String categoria ;
+	private String categoria;
 	private ArrayList<Viideojuego> videojuegos;
+
 	/**
 	 * Create the application.
 	 */
@@ -39,6 +40,7 @@ public class Videojuegos extends JFrame{
 		initialize();
 		this.categoria = categoria;
 	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -50,14 +52,13 @@ public class Videojuegos extends JFrame{
 		setAutoRequestFocus(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		table = new JTable();
-		
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
 		table.setCellSelectionEnabled(true);
 		table.setBounds(0, 0, 434, 227);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(table);
-		
+
 		JButton btnNewButton = new JButton("Cargar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -66,37 +67,30 @@ public class Videojuegos extends JFrame{
 		});
 		btnNewButton.setBounds(122, 238, 153, 12);
 		frame.getContentPane().add(btnNewButton);
-		
-		
+
 		Connection con = BD.initBD("videojuego");
 		Statement st = BD.usarBD(con);
 		videojuegos = BD.videoJuegoCategoria(st, categoria);
-		
-		
+
 	}
-	
-	private void agregarDatos(){
+
+	private void agregarDatos() {
+
+		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 
 
-
-		DefaultTableModel modelo = (DefaultTableModel)table.getModel();
-		
 		String datos[] = new String[4];
-		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
-		
+		// LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST
 
 		for (Viideojuego videojuego : videojuegos) {
-			
-		} {
-			
-			datos[0] = Viideojuego.getGenero();
-			datos[1] = Integer.toString(Viideojuego.getID());
-			datos[2] = Viideojuego.getNombre();
-			datos[3] = Double.toString(Viideojuego.getPrecio());
+			datos[0] = videojuego.getGenero();
+			datos[1] = Integer.toString(videojuego.getID());
+			datos[2] = videojuego.getNombre();
+			datos[3] = Double.toString(videojuego.getPrecio());
 			modelo.addRow(datos);
-		
-		modelo.addRow(datos);
+
 		}
+
 		TableColumn colum1 = null;
 		colum1 = table.getColumnModel().getColumn(0);
 		colum1.setPreferredWidth(60);
@@ -111,8 +105,6 @@ public class Videojuegos extends JFrame{
 		colum4 = table.getColumnModel().getColumn(3);
 		colum4.setPreferredWidth(10);
 
+	}
 
-		} 
-	
-	
 }
