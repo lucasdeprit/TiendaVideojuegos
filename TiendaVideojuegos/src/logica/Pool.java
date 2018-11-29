@@ -9,10 +9,10 @@ public class Pool {
 
     public DataSource dataSource;
 
-    public String db = "fundacion";
+    public String db = "registros";
     public String url = "jdbc:mysql://localhost/"+db;
     public String user = "root";
-    public String pass = "123";
+    public String pass = "";
 
 
 
