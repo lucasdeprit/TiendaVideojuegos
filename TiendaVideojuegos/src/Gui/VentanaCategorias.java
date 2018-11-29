@@ -97,7 +97,6 @@ public class VentanaCategorias {
 			public void actionPerformed(ActionEvent arg0) {
 				Videojuegos videojuegos = new Videojuegos(accion);
 				videojuegos.frame.setVisible(true);
-				
 			}
 
 			
@@ -112,7 +111,7 @@ public class VentanaCategorias {
 		});
 		btnSalir.setBounds(164, 216, 113, 34);
 		frmCategorias.getContentPane().add(btnSalir);
-		connection = BD.initBD("BD");
+		connection = BD.initBD();
 		statement = BD.CrearTablasBD(connection);
 		misVideojuegos = BD.videojuegoSelect(statement);
 		

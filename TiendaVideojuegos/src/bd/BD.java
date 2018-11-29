@@ -21,10 +21,11 @@ public class BD {
 	private static Exception lastError = null;
 	private static Statement statement;
 
-	public static Connection initBD(String nombreBD) {
+	public static Connection initBD() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			Connection con = DriverManager.getConnection("jdbc:sqlite:recursos/TiendaVideojuegos.db");
+//			Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 			return con;
 		} catch (ClassNotFoundException | SQLException e) {
 			lastError = e;
