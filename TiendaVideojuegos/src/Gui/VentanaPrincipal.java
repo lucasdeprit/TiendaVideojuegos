@@ -123,6 +123,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 		
 		if(!hayActividad) {
 			V.dispose();
+			System.out.println(hayActividad);
+		}
+		else {
+			V.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		}
 	}
 }
