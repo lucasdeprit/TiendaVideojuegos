@@ -2,14 +2,14 @@ package logica;
 
 public class Viideojuego{
 
-	private int  ID;
-	private String nombre;
+	private  int  ID;
+	private  String nombre;
 	//private int edad;
-	private String genero;
+	private  String genero;
 	//private String Marca;
 	//private String plataforma;
 	//private String descripcion;
-	private double precio;
+	private  double precio;
 	
 	
 	
@@ -40,19 +40,19 @@ public class Viideojuego{
 	}
 	
 	
-	public double getPrecio() {
+	public  double getPrecio() {
 		return precio;
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public int getID() {
+	public  int getID() {
 		return ID;
 	}
 	public void setID(int iD) {
 		ID = iD;
 	}
-	public String getNombre() {
+	public  String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {

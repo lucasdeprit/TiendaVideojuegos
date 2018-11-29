@@ -49,7 +49,15 @@ public class VentanaCategorias {
 	public VentanaCategorias() {
 		initialize();
 	}
-
+	
+	private static final String accion = "ACCION";
+	private static final String estrategia = "ESTRATEGIA";
+	private static final String lucha = "LUCHA";
+	private static final String aventuras = "AVENTURAS";
+	private static final String deportes = "DEPORTES";
+	private static final String arcade = "ARCADE";
+	private static final String carreras = "CARRERAS";
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -60,34 +68,34 @@ public class VentanaCategorias {
 		frmCategorias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCategorias.getContentPane().setLayout(null);
 		
-		JButton btnEstrategia = new JButton("ESTRATEGIA");
+		JButton btnEstrategia = new JButton(estrategia);
 		btnEstrategia.setBounds(311, 137, 113, 34);
 		frmCategorias.getContentPane().add(btnEstrategia);
 		
-		JButton btnLucha = new JButton("LUCHA");
+		JButton btnLucha = new JButton(lucha);
 		btnLucha.setBounds(10, 137, 113, 34);
 		frmCategorias.getContentPane().add(btnLucha);
 		
-		JButton btnAventuras = new JButton("AVENTURAS");
+		JButton btnAventuras = new JButton(aventuras);
 		btnAventuras.setBounds(311, 11, 113, 34);
 		frmCategorias.getContentPane().add(btnAventuras);
 		
-		JButton btnDeportes = new JButton("DEPORTES");
+		JButton btnDeportes = new JButton(deportes);
 		btnDeportes.setBounds(311, 74, 113, 34);
 		frmCategorias.getContentPane().add(btnDeportes);
 		
-		JButton btnArcade = new JButton("ARCADE");
+		JButton btnArcade = new JButton(arcade);
 		btnArcade.setBounds(10, 74, 113, 34);
 		frmCategorias.getContentPane().add(btnArcade);
 		
-		JButton btnCarreras = new JButton("CARRERAS");
+		JButton btnCarreras = new JButton(carreras);
 		btnCarreras.setBounds(164, 74, 113, 34);
 		frmCategorias.getContentPane().add(btnCarreras);
 		
-		JButton button_5 = new JButton("ACCION");
+		JButton button_5 = new JButton(accion);
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Videojuegos videojuegos = new Videojuegos();
+				Videojuegos videojuegos = new Videojuegos(accion);
 				videojuegos.frame.setVisible(true);
 				
 			}
