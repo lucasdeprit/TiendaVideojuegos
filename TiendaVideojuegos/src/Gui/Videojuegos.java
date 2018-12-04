@@ -34,7 +34,7 @@ public class Videojuegos extends JFrame {
 	JTable table;
 	private String categoria;
 	private ArrayList<Viideojuego> videojuegos;
-	Connection connection=null;
+	Connection connection=BD.initBD();
 	private JScrollPane scrollPane;
 
 	/**
@@ -70,15 +70,16 @@ public class Videojuegos extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String query="select * from videojuego";
-					PreparedStatement pst = connection.prepareStatement(query);
-					ResultSet rs = pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
+					if(categoria.toUpperCase().equals("ACCION")) {
+						String query="select * from videojuego where genero ='ACCION'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					}
+					}catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
 				}
-				}
-
 		});
 		btnNewButton.setBounds(122, 238, 153, 12);
 		frame.getContentPane().add(btnNewButton);

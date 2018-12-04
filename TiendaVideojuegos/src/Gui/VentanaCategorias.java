@@ -98,8 +98,6 @@ public class VentanaCategorias {
 				Videojuegos videojuegos = new Videojuegos(accion);
 				videojuegos.frame.setVisible(true);
 			}
-
-			
 		});
 		button_5.setBounds(10, 17, 113, 34);
 		frmCategorias.getContentPane().add(button_5);

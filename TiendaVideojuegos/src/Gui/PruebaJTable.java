@@ -66,7 +66,7 @@ public class PruebaJTable {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			try {
-				String query="select * from videojuego";
+				String query="select * from videojuego where genero = 'ACCION'";
 				PreparedStatement pst = connection.prepareStatement(query);
 				ResultSet rs = pst.executeQuery();
 				table.setModel(DbUtils.resultSetToTableModel(rs));
