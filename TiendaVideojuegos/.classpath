@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="conectores/commons-dbcp-1.4.jar"/>
 	<classpathentry kind="lib" path="conectores/commons-pool-1.6.jar"/>
 	<classpathentry kind="lib" path="conectores/mysql-connector-java-5.1.16.jar"/>
+	<classpathentry kind="lib" path="conectores/rs2xml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
