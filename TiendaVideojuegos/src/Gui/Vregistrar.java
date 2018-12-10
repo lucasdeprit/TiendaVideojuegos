@@ -50,7 +50,7 @@ public class Vregistrar extends JFrame {
 	private JTextField Edad;
 	private JTextField DireccionCorreo;
 	private JTextField Nick;
-	private JTextField Contrasena;
+	private JPasswordField contrasenya;
 	
 
 	public void Enviar_datos() {
@@ -59,8 +59,7 @@ public class Vregistrar extends JFrame {
 
 			String sDriver = "com.mysql.jdbc.Driver";
 			Class.forName(sDriver).newInstance();
-			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/registros", "root",
-					"");
+			java.sql.Connection conexion = DriverManager.getConnection("jdbc:sqlite:recursos/TiendaVideojuegos.db");
 
 			if (conexion != null) {
 
@@ -73,7 +72,7 @@ public class Vregistrar extends JFrame {
 				stmt.setInt(3, Integer.parseInt(Edad.getText()));
 				stmt.setString(4, DireccionCorreo.getText());
 				stmt.setString(5, Nick.getText());
-				stmt.setString(6, Contrasena.getText());
+				stmt.setString(6, contrasenya.getText());
 
 				stmt.executeUpdate();
 
@@ -146,11 +145,10 @@ public class Vregistrar extends JFrame {
 		Nick.setColumns(10);
 		Nick.setBounds(184, 145, 201, 20);
 		getContentPane().add(Nick);
-
-		Contrasena = new JTextField();
-		Contrasena.setColumns(10);
-		Contrasena.setBounds(184, 172, 201, 20);
-		getContentPane().add(Contrasena);
+		
+		contrasenya = new JPasswordField();
+		contrasenya.setBounds(184, 169, 201, 21);
+		getContentPane().add(contrasenya);
 
 
 	}

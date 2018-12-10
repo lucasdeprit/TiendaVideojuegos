@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JTextField;
+
 import logica.Viideojuego;
 
 public class BD {
@@ -56,9 +59,16 @@ public class BD {
 			}
 			try {
 				statement.executeUpdate("create table videojuego "
-						+ "(id integer, nombre string,genero_nombre string, precio double )");
+						+ "(id integer, nombre string, genero_nombre string, precio double )");
 			} catch (SQLException e) {
-
+			}
+			
+			try {
+				statement.executeUpdate("create table usuario "
+						+ "(id integer, nombre string, edad int, direccionCorreo String, nick String, string Contrasenya )");
+			
+			}catch (SQLException e){
+				
 			}
 			return statement;
 		} catch (SQLException e) {
