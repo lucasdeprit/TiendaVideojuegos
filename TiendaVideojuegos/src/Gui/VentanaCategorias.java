@@ -71,26 +71,62 @@ public class VentanaCategorias {
 		JButton btnEstrategia = new JButton(estrategia);
 		btnEstrategia.setBounds(311, 137, 113, 34);
 		frmCategorias.getContentPane().add(btnEstrategia);
+		btnEstrategia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos(estrategia);
+				videojuegos.frame.setVisible(true);
+			}
+		});
 		
 		JButton btnLucha = new JButton(lucha);
 		btnLucha.setBounds(10, 137, 113, 34);
 		frmCategorias.getContentPane().add(btnLucha);
+		btnLucha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos(lucha);
+				videojuegos.frame.setVisible(true);
+			}
+		});
 		
 		JButton btnAventuras = new JButton(aventuras);
 		btnAventuras.setBounds(311, 11, 113, 34);
 		frmCategorias.getContentPane().add(btnAventuras);
+		btnAventuras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos(aventuras);
+				videojuegos.frame.setVisible(true);
+			}
+		});
 		
 		JButton btnDeportes = new JButton(deportes);
 		btnDeportes.setBounds(311, 74, 113, 34);
 		frmCategorias.getContentPane().add(btnDeportes);
+		btnDeportes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos(deportes);
+				videojuegos.frame.setVisible(true);
+			}
+		});
 		
 		JButton btnArcade = new JButton(arcade);
 		btnArcade.setBounds(10, 74, 113, 34);
 		frmCategorias.getContentPane().add(btnArcade);
+		btnArcade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos(arcade);
+				videojuegos.frame.setVisible(true);
+			}
+		});
 		
 		JButton btnCarreras = new JButton(carreras);
 		btnCarreras.setBounds(164, 74, 113, 34);
 		frmCategorias.getContentPane().add(btnCarreras);
+		btnCarreras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Videojuegos videojuegos = new Videojuegos(carreras);
+				videojuegos.frame.setVisible(true);
+			}
+		});
 		
 		JButton button_5 = new JButton(accion);
 		button_5.addActionListener(new ActionListener() {

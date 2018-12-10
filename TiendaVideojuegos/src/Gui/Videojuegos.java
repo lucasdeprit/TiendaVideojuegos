@@ -75,6 +75,37 @@ public class Videojuegos extends JFrame {
 						PreparedStatement pst = connection.prepareStatement(query);
 						ResultSet rs = pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
+					} if(categoria.toUpperCase().equals("CARRERAS")) {
+						String query="select * from videojuego where genero ='CONDUCCION'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					}if(categoria.toUpperCase().equals("ARCADE")) {
+						String query="select * from videojuego where genero ='ARCADE'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					}if(categoria.toUpperCase().equals("DEPORTES")) {
+						String query="select * from videojuego where genero ='DEPORTES'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					}
+					if(categoria.toUpperCase().equals("AVENTURAS")) {
+						String query="select * from videojuego where genero ='AVENTURAS'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					}if(categoria.toUpperCase().equals("LUCHA")) {
+						String query="select * from videojuego where genero ='LUCHA'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					}if(categoria.toUpperCase().equals("ESTRATEGIA")) {
+						String query="select * from videojuego where genero ='ESTRATEGIA'";
+						PreparedStatement pst = connection.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
 					}
 					}catch (Exception e) {
 						System.out.println(e.getMessage());
