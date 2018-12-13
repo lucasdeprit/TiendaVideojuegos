@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
+import javax.swing.ListSelectionModel;
 
 public class Videojuegos extends JFrame {
 
@@ -51,20 +57,20 @@ public class Videojuegos extends JFrame {
 	private void initialize() {
 		frame = new JFrame();
 		setResizable(false);
-		setSize(460, 296);
-		frame.setSize(460, 296);
+		setSize(800, 600);
+		frame.setSize(800, 600);
 		setAutoRequestFocus(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 434, 227);
+		scrollPane.setBounds(0, 0, 784, 535);
 		frame.getContentPane().add(scrollPane);
 		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		scrollPane.setViewportView(table);
 		table.setFillsViewportHeight(true);
-		table.setColumnSelectionAllowed(true);
-		table.setCellSelectionEnabled(true);
 
 		JButton btnNewButton = new JButton("Cargar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -112,46 +118,43 @@ public class Videojuegos extends JFrame {
 					}
 				}
 		});
-		btnNewButton.setBounds(122, 238, 153, 12);
+		btnNewButton.setBounds(82, 538, 198, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Total Compra");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					File file = new File("recursos//TotalCompraRealizada.txt");
+					if(!file.exists()) {
+						file.createNewFile();
+					}
+					
+					FileWriter fw = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+					
+					for(int i=0; i<table.getRowCount();i++) {
+						for(int j=0; j<table.getColumnCount();j++) {
+							bw.write(table.getModel().getValueAt(i, j).toString()+"");
+						}
+						bw.write("\n,________\n,");
+					}
+					bw.close();
+					fw.close();
+					JOptionPane.showMessageDialog(null, "Total Compra Realizada");
+					
+				}catch(Exception ex){
+					ex.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_1.setBounds(372, 538, 260, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
 //
 //		Connection con = BD.initBD();
 //		Statement st = BD.usarBD(con);
 //		videojuegos = BD.videoJuegoCategoria(st, categoria);
 
 	}
-
-//	private void agregarDatos() {
-//
-//		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-//
-//
-//		String datos[] = new String[4];
-//		// LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST
-//
-//		for (Viideojuego videojuego : videojuegos) {
-//			datos[0] = videojuego.getGenero();
-//			datos[1] = Integer.toString(videojuego.getID());
-//			datos[2] = videojuego.getNombre();
-//			datos[3] = Double.toString(videojuego.getPrecio());
-//			modelo.addRow(datos);
-//
-//		}
-//
-//		TableColumn colum1 = null;
-//		colum1 = table.getColumnModel().getColumn(0);
-//		colum1.setPreferredWidth(60);
-//		TableColumn colum2 = null;
-//		colum2 = table.getColumnModel().getColumn(1);
-//		colum2.setPreferredWidth(5);
-//		TableColumn colum3 = null;
-//		colum3 = table.getColumnModel().getColumn(2);
-//		colum3.setPreferredWidth(40);
-//		colum3.setPreferredWidth(10);
-//		TableColumn colum4 = null;
-//		colum4 = table.getColumnModel().getColumn(3);
-//		colum4.setPreferredWidth(10);
-//
-//	}
-//
 }
