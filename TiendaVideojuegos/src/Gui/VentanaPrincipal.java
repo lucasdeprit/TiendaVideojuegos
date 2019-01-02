@@ -19,7 +19,7 @@ import logica.NotifyingThread;
 import logica.ThreadCompleteListener;;
 
 public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCompleteListener  {
-	private JButton boton, boton2;
+	private JButton boton2;
 	NotifyingThread hilo;
 	boolean hayActividad;
 	static VentanaPrincipal V;
@@ -46,9 +46,9 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 		getContentPane().add(panelimagen);
 		panelimagen.setLayout(null);
 		boton2 = new JButton();
-		boton2.setBounds(260, 430, 200, 30);
+		boton2.setBounds(143, 430, 200, 30);
 		panelimagen.add(boton2);
-		boton2.setText("Registrarse");
+		boton2.setText("ENTRAR");
 		boton2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent click) {
@@ -59,19 +59,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 			}
 		});
 		;
-		boton = new JButton();
-		boton.setBounds(35, 430, 200, 30);
-		panelimagen.add(boton);
-		boton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent click) {
-				Ventana inicio = new Ventana();
-				inicio.setResizable(false);
-				inicio.setVisible(true);
-				hayActividad = true;
-			}
-		});
-		boton.setText("Iniciar Sesion");
 		String path = "http://sae7berita-info.com/wp-content/uploads/2018/06/Asus-ROG-republic-of-gamers-logo-1068x668.jpg";
 		URL url = new URL(path);
 		BufferedImage image = ImageIO.read(url);
