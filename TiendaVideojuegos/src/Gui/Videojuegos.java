@@ -46,7 +46,7 @@ public class Videojuegos extends JFrame {
 	private JScrollPane scrollPane;
 	private JList list;
 	private JLabel lblNew;
-	DefaultListModel DLM = new DefaultListModel();
+	DefaultListModel DLM = new DefaultListModel ();
 
 	/**
 	 * Create the application.
@@ -73,6 +73,12 @@ public class Videojuegos extends JFrame {
 		scrollPane.setBounds(0, 0, 784, 535);
 		frame.getContentPane().add(scrollPane);
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		scrollPane.setViewportView(table);
 		table.setFillsViewportHeight(true);
@@ -130,8 +136,12 @@ public class Videojuegos extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				DLM.addElement("prueba");
+				
+				
 				list.setModel(DLM);
+				String nombreJuego = "";
+				DLM.addElement(nombreJuego);
+				
 				
 				
 				try {
