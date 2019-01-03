@@ -1,11 +1,14 @@
 package Gui;
-
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
 
 import bd.BD;
 import logica.CompruebaInactividad;
@@ -15,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
 import java.io.FileWriter;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,6 +27,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
@@ -30,8 +36,11 @@ import java.awt.Event;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.DropMode;
 
 public class Vregistrar extends JFrame {
 
@@ -89,7 +98,7 @@ public class Vregistrar extends JFrame {
 		}
 	}
 
-	public Vregistrar() {
+	public Vregistrar() throws IOException {
 		setResizable(false);
 		setSize(696, 432);
 		setAutoRequestFocus(false);
@@ -124,10 +133,8 @@ public class Vregistrar extends JFrame {
 				
 			}
 		});
-		btnAceptar.setBounds(76, 292, 135, 59);
+		btnAceptar.setBounds(34, 292, 285, 77);
 		getContentPane().add(btnAceptar);
-		checkCondiciones.setBounds(10, 240, 373, 25);
-		getContentPane().add(checkCondiciones);
 
 		Nombre = new JTextField();
 		Nombre.setBounds(105, 38, 109, 22);
@@ -159,18 +166,56 @@ public class Vregistrar extends JFrame {
 		getContentPane().add(contrasenya);
 		
 		JLabel label = new JLabel("Nick:");
-		label.setBounds(376, 220, 56, 16);
+		label.setBounds(391, 137, 56, 16);
 		getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("Contrase\u00F1a:");
-		label_1.setBounds(362, 262, 70, 16);
+		label_1.setBounds(377, 191, 70, 16);
 		getContentPane().add(label_1);
 		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(451, 133, 201, 25);
+		getContentPane().add(textField);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 349, 403);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		String path = "https://us.123rf.com/450wm/faysalfarhan/faysalfarhan1611/faysalfarhan161100569/65438707-registrarse-editar-icono-de-correo-bot%C3%B3n-cuadrado-naranja.jpg?ver=6";
+		URL url = new URL(path);
+		BufferedImage image = ImageIO.read(url);
+		JLabel imagen1 = new JLabel("");
+		imagen1.setBounds(0, 0, 349, 403);
+		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
+		imagen1.setIcon(new ImageIcon(image));
+		panel.add(imagen1);
+		checkCondiciones.setBounds(0, 232, 332, 25);
+		panel.add(checkCondiciones);
+		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel panel2 = new JPanel();
+		panel2.setBounds(348, 0, 342, 403);
+		getContentPane().add(panel2);
+		panel2.setLayout(null);
+		
+		String path2 = "https://i.kinja-img.com/gawker-media/image/upload/s--t6HCNHV9--/c_scale,f_auto,fl_progressive,q_80,w_800/1392977328615460129.jpg";
+		URL url2 = new URL(path2);
+		BufferedImage image2 = ImageIO.read(url2);
+		JLabel imagen2 = new JLabel("");
+		imagen2.setBounds(0, 0, 342, 403);
+		imagen2.setIcon(new ImageIcon(image2));
+		panel2.add(imagen2);
+		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(440, 260, 201, 21);
-		getContentPane().add(passwordField);
+		passwordField.setDropMode(DropMode.ON);
+		passwordField.setBounds(105, 189, 201, 21);
+		panel2.add(passwordField);
 		
 		JButton btnIniciarSesion = new JButton("INICIAR SESION");
+		btnIniciarSesion.setBounds(57, 292, 275, 71);
+		panel2.add(btnIniciarSesion);
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 						try {
@@ -206,14 +251,6 @@ public class Vregistrar extends JFrame {
 						}
 			}
 		});
-			
-		btnIniciarSesion.setBounds(451, 292, 135, 59);
-		getContentPane().add(btnIniciarSesion);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(440, 218, 201, 20);
-		getContentPane().add(textField);
 
 
 	}

@@ -52,9 +52,16 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 		boton2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent click) {
-				Vregistrar registro = new Vregistrar();
+				Vregistrar registro;
+				try {
+					registro = new Vregistrar();
+					registro.setVisible(true);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				// registro.setResizable(false);
-				registro.setVisible(true);
+				
 				hayActividad = true;
 			}
 		});
