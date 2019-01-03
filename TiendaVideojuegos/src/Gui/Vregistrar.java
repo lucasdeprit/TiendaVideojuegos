@@ -209,7 +209,6 @@ public class Vregistrar extends JFrame {
 		panel2.add(imagen2);
 		
 		passwordField = new JPasswordField();
-		passwordField.setDropMode(DropMode.ON);
 		passwordField.setBounds(105, 189, 201, 21);
 		panel2.add(passwordField);
 		
@@ -243,6 +242,9 @@ public class Vregistrar extends JFrame {
 								}
 								rs.close();
 								stmt.close();
+								
+								VentanaCategorias categorias = new VentanaCategorias();
+								categorias.frmCategorias.setVisible(true);
 							}
 
 						} catch (Exception p) {

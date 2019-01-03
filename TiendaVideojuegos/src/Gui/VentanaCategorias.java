@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaCategorias {
 
-	private JFrame frmCategorias;
+	JFrame frmCategorias;
 	private ArrayList<Viideojuego> misVideojuegos;
 	private Connection connection;
 	private Statement statement;
