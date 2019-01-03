@@ -22,6 +22,7 @@ import bd.BD;
 import logica.Viideojuego;
 import net.proteanit.sql.DbUtils;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -33,6 +34,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 import javax.swing.ListSelectionModel;
+import javax.swing.JLabel;
 
 public class Videojuegos extends JFrame {
 
@@ -42,6 +44,9 @@ public class Videojuegos extends JFrame {
 	private ArrayList<Viideojuego> videojuegos;
 	Connection connection=BD.initBD();
 	private JScrollPane scrollPane;
+	private JList list;
+	private JLabel lblNew;
+	DefaultListModel DLM = new DefaultListModel();
 
 	/**
 	 * Create the application.
@@ -58,7 +63,7 @@ public class Videojuegos extends JFrame {
 		frame = new JFrame();
 		setResizable(false);
 		setSize(800, 600);
-		frame.setSize(800, 600);
+		frame.setSize(1238, 626);
 		setAutoRequestFocus(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -121,9 +126,14 @@ public class Videojuegos extends JFrame {
 		btnNewButton.setBounds(82, 538, 198, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Total Compra");
+		JButton btnNewButton_1 = new JButton("a\u00F1adir al carrito");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				DLM.addElement("prueba");
+				list.setModel(DLM);
+				
+				
 				try {
 					File file = new File("recursos//TotalCompraRealizada.txt");
 					if(!file.exists()) {
@@ -150,6 +160,14 @@ public class Videojuegos extends JFrame {
 		});
 		btnNewButton_1.setBounds(372, 538, 260, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		list = new JList();
+		list.setBounds(836, 64, 305, 471);
+		frame.getContentPane().add(list);
+		
+		lblNew = new JLabel("CARRITO:");
+		lblNew.setBounds(836, 16, 94, 20);
+		frame.getContentPane().add(lblNew);
 		
 //
 //		Connection con = BD.initBD();
