@@ -41,6 +41,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.DropMode;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Vregistrar extends JFrame {
 
@@ -117,6 +119,9 @@ public class Vregistrar extends JFrame {
 		getContentPane().add(lblNick);
 		lblContrasea.setBounds(10, 191, 70, 16);
 		getContentPane().add(lblContrasea);
+		btnAceptar.setForeground(new Color(0, 0, 0));
+		btnAceptar.setFont(new Font("Impact", Font.ITALIC, 18));
+		btnAceptar.setBackground(new Color(255, 69, 0));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -191,9 +196,12 @@ public class Vregistrar extends JFrame {
 		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
 		imagen1.setIcon(new ImageIcon(image));
 		panel.add(imagen1);
-		checkCondiciones.setBounds(0, 232, 332, 25);
+		checkCondiciones.setForeground(new Color(0, 0, 0));
+		checkCondiciones.setFont(new Font("Impact", Font.ITALIC, 13));
+		checkCondiciones.setBackground(new Color(255, 69, 0));
+		checkCondiciones.setBounds(0, 264, 349, 25);
 		panel.add(checkCondiciones);
-		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
+		checkCondiciones.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(348, 0, 342, 403);
@@ -213,6 +221,9 @@ public class Vregistrar extends JFrame {
 		panel2.add(passwordField);
 		
 		JButton btnIniciarSesion = new JButton("INICIAR SESION");
+		btnIniciarSesion.setForeground(Color.WHITE);
+		btnIniciarSesion.setFont(new Font("Impact", Font.ITALIC, 18));
+		btnIniciarSesion.setBackground(new Color(0, 51, 204));
 		btnIniciarSesion.setBounds(57, 292, 275, 71);
 		panel2.add(btnIniciarSesion);
 		btnIniciarSesion.addActionListener(new ActionListener() {
