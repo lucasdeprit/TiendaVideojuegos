@@ -77,7 +77,7 @@ public class VentanaCategorias {
 		
 		JButton btnEstrategia = new JButton("");
 		btnEstrategia.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ESTRATEGIA.png")));
-		btnEstrategia.setBounds(491, 136, 243, 156);
+		btnEstrategia.setBounds(480, 156, 217, 120);
 		frmCategorias.getContentPane().add(btnEstrategia);
 		btnEstrategia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -91,7 +91,7 @@ public class VentanaCategorias {
 		btnLucha.setBackground(Color.WHITE);
 		btnLucha.setForeground(Color.WHITE);
 		btnLucha.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnLucha.setBounds(0, 0, 245, 140);
+		btnLucha.setBounds(15, 16, 217, 120);
 		frmCategorias.getContentPane().add(btnLucha);
 		btnLucha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -102,7 +102,7 @@ public class VentanaCategorias {
 		
 		JButton btnAventuras = new JButton("");
 		btnAventuras.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/AVENTURAS2.jpg")));
-		btnAventuras.setBounds(247, 136, 245, 156);
+		btnAventuras.setBounds(247, 156, 217, 120);
 		frmCategorias.getContentPane().add(btnAventuras);
 		btnAventuras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -113,7 +113,7 @@ public class VentanaCategorias {
 		
 		JButton btnDeportes = new JButton("");
 		btnDeportes.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/DEPORTES.png")));
-		btnDeportes.setBounds(247, 292, 245, 140);
+		btnDeportes.setBounds(247, 292, 217, 120);
 		frmCategorias.getContentPane().add(btnDeportes);
 		btnDeportes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -124,7 +124,7 @@ public class VentanaCategorias {
 		
 		JButton btnArcade = new JButton("");
 		btnArcade.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ARCADE.jpg")));
-		btnArcade.setBounds(247, 1, 245, 140);
+		btnArcade.setBounds(247, 16, 217, 120);
 		frmCategorias.getContentPane().add(btnArcade);
 		btnArcade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -138,7 +138,7 @@ public class VentanaCategorias {
 		btnCarreras.setForeground(Color.WHITE);
 		btnCarreras.setFont(new Font("Stencil", Font.PLAIN, 18));
 		btnCarreras.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnCarreras.setBounds(0, 136, 245, 156);
+		btnCarreras.setBounds(15, 152, 217, 120);
 		frmCategorias.getContentPane().add(btnCarreras);
 		btnCarreras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -155,7 +155,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		button_5.setBounds(491, 1, 245, 140);
+		button_5.setBounds(480, 16, 217, 120);
 		frmCategorias.getContentPane().add(button_5);
 		
 		JButton btnSalir = new JButton("");
@@ -166,6 +166,11 @@ public class VentanaCategorias {
 		});
 		btnSalir.setBounds(595, 307, 119, 103);
 		frmCategorias.getContentPane().add(btnSalir);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/Fondo gris 2.jpg")));
+		lblNewLabel.setBounds(-20, -11, 763, 459);
+		frmCategorias.getContentPane().add(lblNewLabel);
 		connection = BD.initBD();
 		statement = BD.CrearTablasBD(connection);
 		misVideojuegos = BD.videojuegoSelect(statement);
