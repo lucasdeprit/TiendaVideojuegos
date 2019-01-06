@@ -41,6 +41,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.DropMode;
+import java.awt.SystemColor;
 
 public class Vregistrar extends JFrame {
 
@@ -100,7 +101,7 @@ public class Vregistrar extends JFrame {
 
 	public Vregistrar() throws IOException {
 		
-		setSize(696, 432);
+		setSize(701, 432);
 		
 		setLocationRelativeTo(null);
 		setAutoRequestFocus(false);
@@ -168,10 +169,12 @@ public class Vregistrar extends JFrame {
 		getContentPane().add(contrasenya);
 		
 		JLabel label = new JLabel("Nick:");
-		label.setBounds(391, 137, 56, 16);
+		label.setForeground(SystemColor.text);
+		label.setBounds(377, 137, 70, 16);
 		getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("Contrase\u00F1a:");
+		label_1.setForeground(SystemColor.text);
 		label_1.setBounds(377, 191, 70, 16);
 		getContentPane().add(label_1);
 		
@@ -188,14 +191,14 @@ public class Vregistrar extends JFrame {
 		String path = "https://us.123rf.com/450wm/faysalfarhan/faysalfarhan1611/faysalfarhan161100569/65438707-registrarse-editar-icono-de-correo-bot%C3%B3n-cuadrado-naranja.jpg?ver=6";
 		URL url = new URL(path);
 		BufferedImage image = ImageIO.read(url);
+		checkCondiciones.setBounds(0, 232, 332, 25);
+		panel.add(checkCondiciones);
+		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
 		JLabel imagen1 = new JLabel("");
 		imagen1.setBounds(0, 0, 349, 403);
 		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
 		imagen1.setIcon(new ImageIcon(image));
 		panel.add(imagen1);
-		checkCondiciones.setBounds(0, 232, 332, 25);
-		panel.add(checkCondiciones);
-		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(348, 0, 342, 403);
@@ -205,10 +208,6 @@ public class Vregistrar extends JFrame {
 		String path2 = "https://i.kinja-img.com/gawker-media/image/upload/s--t6HCNHV9--/c_scale,f_auto,fl_progressive,q_80,w_800/1392977328615460129.jpg";
 		URL url2 = new URL(path2);
 		BufferedImage image2 = ImageIO.read(url2);
-		JLabel imagen2 = new JLabel("");
-		imagen2.setBounds(0, 0, 342, 403);
-		imagen2.setIcon(new ImageIcon(image2));
-		panel2.add(imagen2);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(105, 189, 201, 21);
@@ -257,6 +256,10 @@ public class Vregistrar extends JFrame {
 						}
 			}
 		});
+		JLabel imagen2 = new JLabel("");
+		imagen2.setBounds(0, -26, 457, 439);
+		imagen2.setIcon(new ImageIcon(image2));
+		panel2.add(imagen2);
 
 
 	}

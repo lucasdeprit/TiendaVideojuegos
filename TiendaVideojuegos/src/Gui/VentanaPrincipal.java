@@ -56,6 +56,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 				try {
 					registro = new Vregistrar();
 					registro.setVisible(true);
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
