@@ -38,6 +38,8 @@ import java.io.IOException;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.SystemColor;
 
 public class Videojuegos extends JFrame {
 
@@ -50,6 +52,7 @@ public class Videojuegos extends JFrame {
 	private JList<Viideojuego> list;
 	private JLabel lblNew;
 	DefaultListModel<Viideojuego> DLM = new DefaultListModel<Viideojuego>();
+	private JLabel lblNewLabel;
 
 	/**
 	 * Create the application.
@@ -66,7 +69,7 @@ public class Videojuegos extends JFrame {
 		frame = new JFrame();
 		setResizable(false);
 		setSize(800, 600);
-		frame.setSize(1238, 626);
+		frame.setSize(1238, 671);
 		setAutoRequestFocus(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -127,10 +130,11 @@ public class Videojuegos extends JFrame {
 					}
 				}
 		});
-		btnNewButton.setBounds(82, 538, 198, 23);
+		btnNewButton.setBounds(81, 542, 198, 45);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("a\u00F1adir al carrito");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(Videojuegos.class.getResource("/imagenes/CARRITO.PNG")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -168,7 +172,7 @@ public class Videojuegos extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(372, 538, 260, 23);
+		btnNewButton_1.setBounds(671, 542, 70, 57);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		list = new JList<Viideojuego>();
@@ -176,10 +180,12 @@ public class Videojuegos extends JFrame {
 		frame.getContentPane().add(list);
 		
 		lblNew = new JLabel("CARRITO:");
+		lblNew.setForeground(SystemColor.text);
 		lblNew.setBounds(836, 16, 94, 20);
 		frame.getContentPane().add(lblNew);
 		
-		JButton btnComprar = new JButton("Comprar");
+		JButton btnComprar = new JButton("");
+		btnComprar.setIcon(new ImageIcon(Videojuegos.class.getResource("/imagenes/COMPRAR3.jpg")));
 		btnComprar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
@@ -216,8 +222,13 @@ public class Videojuegos extends JFrame {
 			        System.out.println(linea);
 			}
 		});
-		btnComprar.setBounds(687, 537, 97, 25);
+		btnComprar.setBounds(930, 551, 129, 79);
 		frame.getContentPane().add(btnComprar);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Videojuegos.class.getResource("/imagenes/Fondo gris 2.jpg")));
+		lblNewLabel.setBounds(0, -2, 1216, 622);
+		frame.getContentPane().add(lblNewLabel);
 		
 //
 //		Connection con = BD.initBD();
