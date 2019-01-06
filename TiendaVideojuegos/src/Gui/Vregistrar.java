@@ -99,8 +99,10 @@ public class Vregistrar extends JFrame {
 	}
 
 	public Vregistrar() throws IOException {
-		setResizable(false);
+		
 		setSize(696, 432);
+		
+		setLocationRelativeTo(null);
 		setAutoRequestFocus(false);
 		setTitle("Registrarse");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

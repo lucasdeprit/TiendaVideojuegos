@@ -19,6 +19,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.SystemColor;
 
 public class VentanaCategorias {
 
@@ -64,12 +70,14 @@ public class VentanaCategorias {
 	private void initialize() {
 		frmCategorias = new JFrame();
 		frmCategorias.setTitle("CATEGORIAS");
-		frmCategorias.setBounds(100, 100, 450, 300);
+		frmCategorias.setSize(751, 482);
+		frmCategorias.setLocationRelativeTo(null);
 		frmCategorias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCategorias.getContentPane().setLayout(null);
 		
-		JButton btnEstrategia = new JButton(estrategia);
-		btnEstrategia.setBounds(311, 137, 113, 34);
+		JButton btnEstrategia = new JButton("");
+		btnEstrategia.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ESTRATEGIA.png")));
+		btnEstrategia.setBounds(491, 136, 243, 156);
 		frmCategorias.getContentPane().add(btnEstrategia);
 		btnEstrategia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -79,7 +87,11 @@ public class VentanaCategorias {
 		});
 		
 		JButton btnLucha = new JButton(lucha);
-		btnLucha.setBounds(10, 137, 113, 34);
+		btnLucha.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/descarga.jpg")));
+		btnLucha.setBackground(Color.WHITE);
+		btnLucha.setForeground(Color.WHITE);
+		btnLucha.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnLucha.setBounds(0, 0, 245, 140);
 		frmCategorias.getContentPane().add(btnLucha);
 		btnLucha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -88,8 +100,9 @@ public class VentanaCategorias {
 			}
 		});
 		
-		JButton btnAventuras = new JButton(aventuras);
-		btnAventuras.setBounds(311, 11, 113, 34);
+		JButton btnAventuras = new JButton("");
+		btnAventuras.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/AVENTURAS2.jpg")));
+		btnAventuras.setBounds(247, 136, 245, 156);
 		frmCategorias.getContentPane().add(btnAventuras);
 		btnAventuras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -98,8 +111,9 @@ public class VentanaCategorias {
 			}
 		});
 		
-		JButton btnDeportes = new JButton(deportes);
-		btnDeportes.setBounds(311, 74, 113, 34);
+		JButton btnDeportes = new JButton("");
+		btnDeportes.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/DEPORTES.png")));
+		btnDeportes.setBounds(247, 292, 245, 140);
 		frmCategorias.getContentPane().add(btnDeportes);
 		btnDeportes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -108,8 +122,9 @@ public class VentanaCategorias {
 			}
 		});
 		
-		JButton btnArcade = new JButton(arcade);
-		btnArcade.setBounds(10, 74, 113, 34);
+		JButton btnArcade = new JButton("");
+		btnArcade.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ARCADE.jpg")));
+		btnArcade.setBounds(247, 1, 245, 140);
 		frmCategorias.getContentPane().add(btnArcade);
 		btnArcade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -118,8 +133,12 @@ public class VentanaCategorias {
 			}
 		});
 		
-		JButton btnCarreras = new JButton(carreras);
-		btnCarreras.setBounds(164, 74, 113, 34);
+		JButton btnCarreras = new JButton("");
+		btnCarreras.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/CARRERAS.png")));
+		btnCarreras.setForeground(Color.WHITE);
+		btnCarreras.setFont(new Font("Stencil", Font.PLAIN, 18));
+		btnCarreras.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnCarreras.setBounds(0, 136, 245, 156);
 		frmCategorias.getContentPane().add(btnCarreras);
 		btnCarreras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -129,38 +148,27 @@ public class VentanaCategorias {
 		});
 		
 		JButton button_5 = new JButton(accion);
+		button_5.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ACCION.jpg")));
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Videojuegos videojuegos = new Videojuegos(accion);
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		button_5.setBounds(10, 17, 113, 34);
+		button_5.setBounds(491, 1, 245, 140);
 		frmCategorias.getContentPane().add(button_5);
 		
-		JButton btnSalir = new JButton("Salir");
+		JButton btnSalir = new JButton("");
+		btnSalir.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/SALIR2.png")));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSalir.setBounds(164, 216, 113, 34);
+		btnSalir.setBounds(595, 307, 119, 103);
 		frmCategorias.getContentPane().add(btnSalir);
 		connection = BD.initBD();
 		statement = BD.CrearTablasBD(connection);
 		misVideojuegos = BD.videojuegoSelect(statement);
 		
 	}
-	/*
-	private void cargarDeBD() {
-		Connection con = BD.initBD( "genero.bd" );
-		Statement stat = BD.CrearTablasBD( con );
-		ArrayList<String> lG = BD.generoSelect( stat, "" );
-		if (lG==null || lG.isEmpty()) return;  // No hay datos en tablas
-		Viideojuego miVideojuego = new Viideojuego(lG.get(0));  // Crear videojuego con nombre de BD
-		ArrayList<String> lGenEnBD = BD.generoSelect( stat, "" );
-		for (String genero : lGenEnBD) {  // Crear generos
-			miVideojuego.setGenero(genero);;
-		}
-	}
-	*/
 }
