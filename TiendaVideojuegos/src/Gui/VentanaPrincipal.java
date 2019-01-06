@@ -16,9 +16,7 @@ import javax.swing.SwingConstants;
 
 import logica.CompruebaInactividad;
 import logica.NotifyingThread;
-import logica.ThreadCompleteListener;
-import java.awt.Font;
-import java.awt.Color;;
+import logica.ThreadCompleteListener;;
 
 public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCompleteListener  {
 	private JButton boton2;
@@ -48,9 +46,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 		getContentPane().add(panelimagen);
 		panelimagen.setLayout(null);
 		boton2 = new JButton();
-		boton2.setBackground(Color.BLACK);
-		boton2.setForeground(Color.RED);
-		boton2.setFont(new Font("Snap ITC", Font.BOLD | Font.ITALIC, 20));
 		boton2.setBounds(143, 430, 200, 30);
 		panelimagen.add(boton2);
 		boton2.setText("ENTRAR");

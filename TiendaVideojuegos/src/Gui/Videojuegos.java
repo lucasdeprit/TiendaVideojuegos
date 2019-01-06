@@ -29,9 +29,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
@@ -44,9 +47,9 @@ public class Videojuegos extends JFrame {
 	private ArrayList<Viideojuego> videojuegos;
 	Connection connection=BD.initBD();
 	private JScrollPane scrollPane;
-	private JList list;
+	private JList<Viideojuego> list;
 	private JLabel lblNew;
-	DefaultListModel DLM = new DefaultListModel ();
+	DefaultListModel<Viideojuego> DLM = new DefaultListModel<Viideojuego>();
 
 	/**
 	 * Create the application.
@@ -73,15 +76,10 @@ public class Videojuegos extends JFrame {
 		scrollPane.setBounds(0, 0, 784, 535);
 		frame.getContentPane().add(scrollPane);
 		table = new JTable();
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-		});
 		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		scrollPane.setViewportView(table);
 		table.setFillsViewportHeight(true);
+		
 
 		JButton btnNewButton = new JButton("Cargar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -136,12 +134,14 @@ public class Videojuegos extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				int row = table.getSelectedRow();
+				int id = Integer.parseInt((String)table.getModel().getValueAt(row, 1));
+				String nombre = (String) table.getModel().getValueAt(row, 2);
+				double precio = (Integer) table.getModel().getValueAt(row, 3);
 				
-				
+				Viideojuego v = new Viideojuego(categoria.toUpperCase(), id, nombre, precio);
+				DLM.addElement(v);
 				list.setModel(DLM);
-				String nombreJuego = "";
-				DLM.addElement(nombreJuego);
-				
 				
 				
 				try {
@@ -171,7 +171,7 @@ public class Videojuegos extends JFrame {
 		btnNewButton_1.setBounds(372, 538, 260, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		list = new JList();
+		list = new JList<Viideojuego>();
 		list.setBounds(836, 64, 305, 471);
 		frame.getContentPane().add(list);
 		
@@ -179,10 +179,51 @@ public class Videojuegos extends JFrame {
 		lblNew.setBounds(836, 16, 94, 20);
 		frame.getContentPane().add(lblNew);
 		
+		JButton btnComprar = new JButton("Comprar");
+		btnComprar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				try(
+			            BufferedWriter bw=new BufferedWriter(new FileWriter("factura"+categoria+".txt"));){
+					for(int i = 0;i<DLM.size();i++) {
+						Viideojuego v = DLM.getElementAt(i);
+						escribeFichero(bw, v.getNombre(),v.getPrecio());
+						
+					}
+			            //Guardamos los cambios del fichero
+			            bw.close();
+			        }catch(IOException e){
+			            System.out.println("Error E/S: "+e);
+			        }
+				
+				
+				
+			    }
+			    public  void escribeFichero(BufferedWriter bw,String n,double p) throws IOException{
+			        //Escribimos en el fichero
+			        bw.write("Has comprado el juego:"+n);
+			        bw.newLine();
+			        bw.write("Su precio es :"+p);
+			        bw.newLine();
+			    }
+			    public  void leeFichero(BufferedReader br) throws IOException{
+			        //Leemos el fichero y lo mostramos por pantalla
+			        String linea=br.readLine();
+			        while(linea!=null){
+			            System.out.println(linea);
+			            linea=br.readLine();       
+			           }
+			        System.out.println(linea);
+			}
+		});
+		btnComprar.setBounds(687, 537, 97, 25);
+		frame.getContentPane().add(btnComprar);
+		
 //
 //		Connection con = BD.initBD();
 //		Statement st = BD.usarBD(con);
 //		videojuegos = BD.videoJuegoCategoria(st, categoria);
 
 	}
+	
 }
