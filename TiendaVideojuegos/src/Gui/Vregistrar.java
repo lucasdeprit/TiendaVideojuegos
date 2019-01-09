@@ -41,7 +41,7 @@ public class Vregistrar extends JFrame {
 	JLabel lblCorreo = new JLabel("Direccion correo:");
 	JLabel lblNick = new JLabel("Nick:");
 	JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-	JButton btnAceptar = new JButton("REGISTRARME");
+	JButton btnAceptar = new JButton("");
 	JCheckBox checkCondiciones = new JCheckBox("Acepto que mis datos sean guardados en la base de datos");
 	private JTextField Nombre;
 	private JTextField Apellidos;
@@ -105,24 +105,6 @@ public class Vregistrar extends JFrame {
 		getContentPane().add(lblNick);
 		lblContrasea.setBounds(10, 191, 70, 16);
 		getContentPane().add(lblContrasea);
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnAceptar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent c) {
-				if (checkCondiciones.isSelected()) {
-					Enviar_datos();
-				}
-				else {
-					logger.warning("No has aceptado las condiciones");
-				}
-				
-			}
-		});
-		btnAceptar.setBounds(34, 292, 285, 77);
-		getContentPane().add(btnAceptar);
 
 		Nombre = new JTextField();
 		Nombre.setBounds(105, 38, 109, 22);
@@ -179,6 +161,25 @@ public class Vregistrar extends JFrame {
 		checkCondiciones.setBounds(0, 232, 332, 25);
 		panel.add(checkCondiciones);
 		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
+		btnAceptar.setBounds(35, 292, 278, 77);
+		panel.add(btnAceptar);
+		btnAceptar.setIcon(new ImageIcon(Vregistrar.class.getResource("/imagenes/REGISTRAR.png")));
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAceptar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent c) {
+				if (checkCondiciones.isSelected()) {
+					Enviar_datos();
+				}
+				else {
+					logger.warning("No has aceptado las condiciones");
+				}
+				
+			}
+		});
 		JLabel imagen1 = new JLabel("");
 		imagen1.setBounds(0, 0, 349, 403);
 		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -198,7 +199,8 @@ public class Vregistrar extends JFrame {
 		passwordField.setBounds(105, 189, 201, 21);
 		panel2.add(passwordField);
 		
-		JButton btnIniciarSesion = new JButton("INICIAR SESION");
+		JButton btnIniciarSesion = new JButton("");
+		btnIniciarSesion.setIcon(new ImageIcon(Vregistrar.class.getResource("/imagenes/LOGIN.png")));
 		btnIniciarSesion.setBounds(57, 292, 275, 71);
 		panel2.add(btnIniciarSesion);
 		btnIniciarSesion.addActionListener(new ActionListener() {
