@@ -121,6 +121,9 @@ public class Videojuegos extends JFrame {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1 .setOpaque(false);
+		btnNewButton_1 .setContentAreaFilled(false);
+		btnNewButton_1 .setBorderPainted(false);
 		btnNewButton_1.setIcon(new ImageIcon(Videojuegos.class.getResource("/imagenes/CARRITO.PNG")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -172,6 +175,9 @@ public class Videojuegos extends JFrame {
 		frame.getContentPane().add(lblNew);
 		
 		JButton btnComprar = new JButton("");
+		btnComprar.setOpaque(false);
+		btnComprar.setContentAreaFilled(false);
+		btnComprar.setBorderPainted(false);
 		btnComprar.setIcon(new ImageIcon(Videojuegos.class.getResource("/imagenes/COMPRAR3.jpg")));
 		btnComprar.addActionListener(new ActionListener() {
 			

@@ -161,9 +161,12 @@ public class Vregistrar extends JFrame {
 		checkCondiciones.setBounds(0, 232, 332, 25);
 		panel.add(checkCondiciones);
 		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
-		btnAceptar.setBounds(35, 292, 278, 77);
+		btnAceptar.setBounds(38, 281, 278, 77);
 		panel.add(btnAceptar);
-		btnAceptar.setIcon(new ImageIcon(Vregistrar.class.getResource("/imagenes/REGISTRAR.png")));
+	
+		btnAceptar.setOpaque(false);
+		btnAceptar.setContentAreaFilled(false);
+		btnAceptar.setBorderPainted(false);
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -201,8 +204,11 @@ public class Vregistrar extends JFrame {
 		
 		JButton btnIniciarSesion = new JButton("");
 		btnIniciarSesion.setIcon(new ImageIcon(Vregistrar.class.getResource("/imagenes/LOGIN.png")));
-		btnIniciarSesion.setBounds(57, 292, 275, 71);
+		btnIniciarSesion.setBounds(61, 274, 219, 58);
 		panel2.add(btnIniciarSesion);
+		btnIniciarSesion.setOpaque(false);
+		btnIniciarSesion.setContentAreaFilled(false);
+		btnIniciarSesion.setBorderPainted(false);
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 						try {
