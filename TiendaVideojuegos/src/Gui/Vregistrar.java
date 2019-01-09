@@ -204,7 +204,7 @@ public class Vregistrar extends JFrame {
 		
 		JButton btnIniciarSesion = new JButton("");
 		btnIniciarSesion.setIcon(new ImageIcon(Vregistrar.class.getResource("/imagenes/LOGIN.png")));
-		btnIniciarSesion.setBounds(61, 274, 219, 58);
+		btnIniciarSesion.setBounds(61, 299, 219, 58);
 		panel2.add(btnIniciarSesion);
 		btnIniciarSesion.setOpaque(false);
 		btnIniciarSesion.setContentAreaFilled(false);
