@@ -9,22 +9,15 @@ import logica.Viideojuego;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
-import java.awt.SystemColor;
 
 public class VentanaCategorias {
 
@@ -176,4 +169,6 @@ public class VentanaCategorias {
 		misVideojuegos = BD.videojuegoSelect(statement);
 		
 	}
+	
 }
+

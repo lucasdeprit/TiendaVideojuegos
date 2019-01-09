@@ -1,15 +1,6 @@
 package logica;
 
-import java.util.Timer;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.swing.JFrame;
-import javax.swing.text.Document;
-
-import org.omg.CORBA.TIMEOUT;
-
-import Gui.VentanaPrincipal;
 
 
 public class CompruebaInactividad extends  NotifyingThread  {
