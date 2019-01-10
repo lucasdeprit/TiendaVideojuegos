@@ -105,7 +105,6 @@ public class BD {
 
 	public static boolean generoInsert(Statement st, String genero) {
 		String sentSQL = "";
-		insertarDatosGeneroBD();
 		try {
 			sentSQL = "insert into genero values(" + "'" + securizar(genero) + "')";
 			int val = st.executeUpdate(sentSQL);
@@ -145,7 +144,6 @@ public class BD {
 	public static boolean videojuegoInsert(Statement st, String genero_nombre, int id,
 			String nombre,double precio) {
 		String sentSQL = "";
-		insertarDatosVideojuegoBD();
 		try {
 			sentSQL = "insert into reserva values('"
 					+ securizar(genero_nombre) + "'," + id + "," + securizar(nombre) + "',"
@@ -250,64 +248,64 @@ public class BD {
 		return ret.toString();
 	}
 	
-	public static void insertarDatosGeneroBD() {
-		FileReader file;
-		try {
-			file = new FileReader("generos.txt");
-			BufferedReader bf = new BufferedReader(file);
-			String line = null;
-			while((line = bf.readLine()) != null){
-				BD.generoInsert(statement, line);
-			}
-			bf.close();
-			file.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-		
-	public static void insertarDatosVideojuegoBD() {	
-		FileReader fr;
-		try {
-			fr = new FileReader("videojuegos.txt");
-			BufferedReader bf = new BufferedReader(fr);
-			String  line = null;
-			while((line = bf.readLine()) != null){
-				String [] valores = line.split(",");
-				
-//				if(valores[0] == "ACCION") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}if(valores[0] == "AVENTURA") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}if(valores[0] == "CARRERAS") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}if(valores[0] == "LUCHA") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}if(valores[0] == "ARCADE") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}if(valores[0] == "DEPORTE") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}if(valores[0] == "ESTRATEGIA") {
-//					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
-//				}else {
-				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );	
-				
-			}
-			bf.close();
-			fr.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//	public static void insertarDatosGeneroBD() {
+//		FileReader file;
+//		try {
+//			file = new FileReader("generos.txt");
+//			BufferedReader bf = new BufferedReader(file);
+//			String line = null;
+//			while((line = bf.readLine()) != null){
+//				BD.generoInsert(statement, line);
+//			}
+//			bf.close();
+//			file.close();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//		
+//	public static void insertarDatosVideojuegoBD() {	
+//		FileReader fr;
+//		try {
+//			fr = new FileReader("videojuegos.txt");
+//			BufferedReader bf = new BufferedReader(fr);
+//			String  line = null;
+//			while((line = bf.readLine()) != null){
+//				String [] valores = line.split(",");
+//				
+////				if(valores[0] == "ACCION") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}if(valores[0] == "AVENTURA") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}if(valores[0] == "CARRERAS") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}if(valores[0] == "LUCHA") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}if(valores[0] == "ARCADE") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}if(valores[0] == "DEPORTE") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}if(valores[0] == "ESTRATEGIA") {
+////					BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );
+////				}else {
+//				BD.videojuegoInsert(statement,valores[0] ,Integer.parseInt(valores [1]) ,valores[2] ,Double.parseDouble(valores[3]) );	
+//				
+//			}
+//			bf.close();
+//			fr.close();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
 
 }
