@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 public class Vregistrar extends JFrame {
 
@@ -85,6 +86,7 @@ public class Vregistrar extends JFrame {
 	}
 
 	public Vregistrar() throws IOException {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Vregistrar.class.getResource("/imagenes/Logo.jpg")));
 		
 		setSize(701, 432);
 		

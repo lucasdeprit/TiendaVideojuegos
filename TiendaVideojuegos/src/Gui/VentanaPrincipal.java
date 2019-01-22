@@ -16,7 +16,8 @@ import javax.swing.SwingConstants;
 
 import logica.CompruebaInactividad;
 import logica.NotifyingThread;
-import logica.ThreadCompleteListener;;
+import logica.ThreadCompleteListener;
+import java.awt.Toolkit;;
 
 public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCompleteListener  {
 	private JButton boton2;
@@ -26,6 +27,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 
 	public VentanaPrincipal() throws IOException {
 		super();
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/imagenes/Logo.jpg")));
 		configurarVentana();
 		inicializarComponentes();
 	}

@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 public class VentanaCategorias {
 
@@ -62,6 +63,7 @@ public class VentanaCategorias {
 	 */
 	private void initialize() {
 		frmCategorias = new JFrame();
+		frmCategorias.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaCategorias.class.getResource("/imagenes/Logo.jpg")));
 		frmCategorias.setTitle("CATEGORIAS");
 		frmCategorias.setSize(751, 482);
 		frmCategorias.setLocationRelativeTo(null);

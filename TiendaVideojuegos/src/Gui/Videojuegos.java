@@ -27,6 +27,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 public class Videojuegos extends JFrame {
 
@@ -54,6 +55,7 @@ public class Videojuegos extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Videojuegos.class.getResource("/imagenes/Logo.jpg")));
 		setResizable(false);
 		setSize(800, 600);
 		frame.setSize(1238, 671);
