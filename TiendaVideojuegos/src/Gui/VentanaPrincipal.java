@@ -19,7 +19,7 @@ import logica.NotifyingThread;
 import logica.ThreadCompleteListener;
 import java.awt.Toolkit;;
 
-public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCompleteListener  {
+public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCompleteListener {
 	private JButton boton2;
 	NotifyingThread hilo;
 	boolean hayActividad;
@@ -58,13 +58,13 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 				try {
 					registro = new Vregistrar();
 					registro.setVisible(true);
-					
+
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				// registro.setResizable(false);
-				
+
 				hayActividad = true;
 			}
 		});
@@ -81,15 +81,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 		panelimagen.add(mostrar_imagen);
 		hilo = new CompruebaInactividad(10);
 		hilo.addListener(this); // add ourselves as a listener
-		hilo.start();           // Start the Thread
-		
+		hilo.start(); // Start the Thread
+
 		this.addWindowListener(new WindowAdapter() {
 			@Override
-		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-		        hilo.interrupt();
-		    }
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				hilo.interrupt();
+			}
 		});
-		
+
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}
 
@@ -104,7 +104,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 		try {
 			V = new VentanaPrincipal();
 			V.setVisible(true);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -117,12 +117,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ThreadCo
 
 	@Override
 	public void notifyOfThreadComplete(Thread thread) {
-		
-		if(!hayActividad) {
+
+		if (!hayActividad) {
 			V.dispose();
 			System.out.println(hayActividad);
-		}
-		else {
+		} else {
 			V.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		}
 	}

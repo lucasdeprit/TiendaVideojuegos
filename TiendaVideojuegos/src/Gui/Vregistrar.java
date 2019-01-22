@@ -1,4 +1,5 @@
 package Gui;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +36,6 @@ public class Vregistrar extends JFrame {
 
 	public static Logger logger = Logger.getLogger(Vregistrar.class.getName());
 
-
 	JLabel lblNombre = new JLabel("Nombre:");
 	JLabel lblApellidos = new JLabel("Apellidos:");
 	JLabel lblEdad = new JLabel("Edad:");
@@ -52,15 +52,15 @@ public class Vregistrar extends JFrame {
 	private JPasswordField contrasenya;
 	private JPasswordField passwordField;
 	private JTextField textField;
-	
 
 	public void Enviar_datos() {
-		
+
 		try {
 
 			String sDriver = "com.mysql.jdbc.Driver";
 			Class.forName(sDriver).newInstance();
-			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto" , "root" , "");
+			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto", "root",
+					"");
 
 			if (conexion != null) {
 
@@ -87,9 +87,9 @@ public class Vregistrar extends JFrame {
 
 	public Vregistrar() throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Vregistrar.class.getResource("/imagenes/Logo.jpg")));
-		
+
 		setSize(701, 432);
-		
+
 		setLocationRelativeTo(null);
 		setAutoRequestFocus(false);
 		setTitle("Registrarse");
@@ -132,31 +132,31 @@ public class Vregistrar extends JFrame {
 		Nick.setColumns(10);
 		Nick.setBounds(105, 164, 201, 20);
 		getContentPane().add(Nick);
-		
+
 		contrasenya = new JPasswordField();
 		contrasenya.setBounds(105, 189, 201, 21);
 		getContentPane().add(contrasenya);
-		
+
 		JLabel label = new JLabel("Nick:");
 		label.setForeground(SystemColor.text);
 		label.setBounds(377, 137, 70, 16);
 		getContentPane().add(label);
-		
+
 		JLabel label_1 = new JLabel("Contrase\u00F1a:");
 		label_1.setForeground(SystemColor.text);
 		label_1.setBounds(377, 191, 70, 16);
 		getContentPane().add(label_1);
-		
+
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(451, 133, 201, 25);
 		getContentPane().add(textField);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 349, 403);
 		getContentPane().add(panel);
 		panel.setLayout(null);
-		
+
 		String path = "https://us.123rf.com/450wm/faysalfarhan/faysalfarhan1611/faysalfarhan161100569/65438707-registrarse-editar-icono-de-correo-bot%C3%B3n-cuadrado-naranja.jpg?ver=6";
 		URL url = new URL(path);
 		BufferedImage image = ImageIO.read(url);
@@ -165,7 +165,7 @@ public class Vregistrar extends JFrame {
 		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
 		btnAceptar.setBounds(38, 281, 278, 77);
 		panel.add(btnAceptar);
-	
+
 		btnAceptar.setOpaque(false);
 		btnAceptar.setContentAreaFilled(false);
 		btnAceptar.setBorderPainted(false);
@@ -178,11 +178,10 @@ public class Vregistrar extends JFrame {
 			public void mouseClicked(MouseEvent c) {
 				if (checkCondiciones.isSelected()) {
 					Enviar_datos();
-				}
-				else {
+				} else {
 					logger.warning("No has aceptado las condiciones");
 				}
-				
+
 			}
 		});
 		JLabel imagen1 = new JLabel("");
@@ -190,20 +189,20 @@ public class Vregistrar extends JFrame {
 		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
 		imagen1.setIcon(new ImageIcon(image));
 		panel.add(imagen1);
-		
+
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(348, 0, 342, 403);
 		getContentPane().add(panel2);
 		panel2.setLayout(null);
-		
+
 		String path2 = "https://i.kinja-img.com/gawker-media/image/upload/s--t6HCNHV9--/c_scale,f_auto,fl_progressive,q_80,w_800/1392977328615460129.jpg";
 		URL url2 = new URL(path2);
 		BufferedImage image2 = ImageIO.read(url2);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(105, 189, 201, 21);
 		panel2.add(passwordField);
-		
+
 		JButton btnIniciarSesion = new JButton("");
 		btnIniciarSesion.setIcon(new ImageIcon(Vregistrar.class.getResource("/imagenes/LOGIN.png")));
 		btnIniciarSesion.setBounds(61, 299, 219, 58);
@@ -213,42 +212,44 @@ public class Vregistrar extends JFrame {
 		btnIniciarSesion.setBorderPainted(false);
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-						try {
+				try {
 
-							String sDriver = "com.mysql.jdbc.Driver";
-							Class.forName(sDriver).newInstance();
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto" , "root" , "");
+					String sDriver = "com.mysql.jdbc.Driver";
+					Class.forName(sDriver).newInstance();
+					java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto",
+							"root", "");
 
-							if (conexion != null) {
+					if (conexion != null) {
 
-								JOptionPane.showMessageDialog(null, "Conectado correctamente a la base de datos");
+						JOptionPane.showMessageDialog(null, "Conectado correctamente a la base de datos");
 
-								PreparedStatement stmt = conexion.prepareStatement("SELECT * FROM login WHERE usuario=? and contrasenia=? ");
-								stmt.setString(1, textField.getText() );
-								stmt.setString(2, passwordField.getText() );
-								ResultSet rs = stmt.executeQuery();
-								int count = 0;
-								while(rs.next()) {
-									count= count + 1;
-								}
-								if(count==1) {
-									JOptionPane.showMessageDialog(null, "INICIO DE SESION CORRECTO");
-									rs.close();
-									stmt.close();
-									
-									VentanaCategorias categorias = new VentanaCategorias();
-									categorias.frmCategorias.setVisible(true);
-								}else {
-									JOptionPane.showMessageDialog(null, "INICIO DE SESION INCORRECTO");
-									
-								}
-								
-							}
-
-						} catch (Exception p) {
-							p.getStackTrace();
-							JOptionPane.showMessageDialog(null, "NO CONECTADO A LA BASE DE DATOS");
+						PreparedStatement stmt = conexion
+								.prepareStatement("SELECT * FROM login WHERE usuario=? and contrasenia=? ");
+						stmt.setString(1, textField.getText());
+						stmt.setString(2, passwordField.getText());
+						ResultSet rs = stmt.executeQuery();
+						int count = 0;
+						while (rs.next()) {
+							count = count + 1;
 						}
+						if (count == 1) {
+							JOptionPane.showMessageDialog(null, "INICIO DE SESION CORRECTO");
+							rs.close();
+							stmt.close();
+
+							VentanaCategorias categorias = new VentanaCategorias();
+							categorias.frmCategorias.setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(null, "INICIO DE SESION INCORRECTO");
+
+						}
+
+					}
+
+				} catch (Exception p) {
+					p.getStackTrace();
+					JOptionPane.showMessageDialog(null, "NO CONECTADO A LA BASE DE DATOS");
+				}
 			}
 		});
 		JLabel imagen2 = new JLabel("");
@@ -256,6 +257,5 @@ public class Vregistrar extends JFrame {
 		imagen2.setIcon(new ImageIcon(image2));
 		panel2.add(imagen2);
 
-
 	}
-		}
+}

@@ -26,7 +26,7 @@ public class VentanaCategorias {
 	private ArrayList<Viideojuego> misVideojuegos;
 	private Connection connection;
 	private Statement statement;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -49,7 +49,7 @@ public class VentanaCategorias {
 	public VentanaCategorias() {
 		initialize();
 	}
-	
+
 	private static final String accion = "ACCION";
 	private static final String estrategia = "ESTRATEGIA";
 	private static final String lucha = "LUCHA";
@@ -57,19 +57,20 @@ public class VentanaCategorias {
 	private static final String deportes = "DEPORTES";
 	private static final String arcade = "ARCADE";
 	private static final String carreras = "CARRERAS";
-	
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frmCategorias = new JFrame();
-		frmCategorias.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaCategorias.class.getResource("/imagenes/Logo.jpg")));
+		frmCategorias.setIconImage(
+				Toolkit.getDefaultToolkit().getImage(VentanaCategorias.class.getResource("/imagenes/Logo.jpg")));
 		frmCategorias.setTitle("CATEGORIAS");
 		frmCategorias.setSize(751, 482);
 		frmCategorias.setLocationRelativeTo(null);
 		frmCategorias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCategorias.getContentPane().setLayout(null);
-		
+
 		JButton btnEstrategia = new JButton("");
 		btnEstrategia.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ESTRATEGIA.png")));
 		btnEstrategia.setBounds(480, 156, 217, 120);
@@ -80,7 +81,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		
+
 		JButton btnLucha = new JButton(lucha);
 		btnLucha.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/descarga.jpg")));
 		btnLucha.setBackground(Color.WHITE);
@@ -94,7 +95,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		
+
 		JButton btnAventuras = new JButton("");
 		btnAventuras.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/AVENTURAS2.jpg")));
 		btnAventuras.setBounds(247, 156, 217, 120);
@@ -105,7 +106,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		
+
 		JButton btnDeportes = new JButton("");
 		btnDeportes.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/DEPORTES.png")));
 		btnDeportes.setBounds(247, 292, 217, 120);
@@ -116,7 +117,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		
+
 		JButton btnArcade = new JButton("");
 		btnArcade.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ARCADE.jpg")));
 		btnArcade.setBounds(247, 16, 217, 120);
@@ -127,7 +128,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		
+
 		JButton btnCarreras = new JButton("");
 		btnCarreras.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/CARRERAS.png")));
 		btnCarreras.setForeground(Color.WHITE);
@@ -141,7 +142,7 @@ public class VentanaCategorias {
 				videojuegos.frame.setVisible(true);
 			}
 		});
-		
+
 		JButton button_5 = new JButton(accion);
 		button_5.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/ACCION.jpg")));
 		button_5.addActionListener(new ActionListener() {
@@ -152,7 +153,7 @@ public class VentanaCategorias {
 		});
 		button_5.setBounds(480, 16, 217, 120);
 		frmCategorias.getContentPane().add(button_5);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/Fondo gris 2.jpg")));
 		lblNewLabel.setBounds(-20, -11, 763, 459);
@@ -160,8 +161,7 @@ public class VentanaCategorias {
 		connection = BD.initBD();
 		statement = BD.CrearTablasBD(connection);
 		misVideojuegos = BD.videojuegoSelect(statement);
-		
-	}
-	
-}
 
+	}
+
+}
