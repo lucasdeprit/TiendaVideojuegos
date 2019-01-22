@@ -158,7 +158,7 @@ public class Vregistrar extends JFrame {
 		String path = "https://us.123rf.com/450wm/faysalfarhan/faysalfarhan1611/faysalfarhan161100569/65438707-registrarse-editar-icono-de-correo-bot%C3%B3n-cuadrado-naranja.jpg?ver=6";
 		URL url = new URL(path);
 		BufferedImage image = ImageIO.read(url);
-		checkCondiciones.setBounds(0, 232, 332, 25);
+		checkCondiciones.setBounds(0, 232, 349, 25);
 		panel.add(checkCondiciones);
 		checkCondiciones.setHorizontalAlignment(SwingConstants.CENTER);
 		btnAceptar.setBounds(38, 281, 278, 77);
