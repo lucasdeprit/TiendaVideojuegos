@@ -151,15 +151,6 @@ public class VentanaCategorias {
 		button_5.setBounds(480, 16, 217, 120);
 		frmCategorias.getContentPane().add(button_5);
 		
-		JButton btnSalir = new JButton("");
-		btnSalir.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/SALIR2.png")));
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnSalir.setBounds(595, 307, 119, 103);
-		frmCategorias.getContentPane().add(btnSalir);
-		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(VentanaCategorias.class.getResource("/imagenes/Fondo gris 2.jpg")));
 		lblNewLabel.setBounds(-20, -11, 763, 459);
